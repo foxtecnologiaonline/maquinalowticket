@@ -1,0 +1,14 @@
+{
+  "name": "@maquinalowticket/database",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Database schemas and migrations",
+  "scripts": {
+    "migrate:up": "psql $DATABASE_URL < schema.sql",
+    "migrate:down": "psql $DATABASE_URL -f migrations/rollback.sql"
+  },
+  "devDependencies": {
+    "prisma": "^5.6.0"
+  }
+}

@@ -56,7 +56,7 @@ Campanha 4: Performance Max (após 30 conversões no pixel/GA4)
 - Título 2: Aprenda em 7 Dias — Do Zero
 - Título 3: Comece a Cobrar Suas Clientes
 - Descrição 1: Método passo a passo para iniciantes. Garantia de 7 dias. Acesso imediato ao curso completo.
-- Descrição 2: +12.847 alunas formadas. Bônus: kit de precificação grátis hoje. Vagas com condição especial.
+- Descrição 2: +12.847 alunas formadas. Certificado incluso grátis. Vagas com condição especial.
 
 **Anúncio 2 (dor financeira)**
 - Título 1: Renda Extra Fazendo Unhas

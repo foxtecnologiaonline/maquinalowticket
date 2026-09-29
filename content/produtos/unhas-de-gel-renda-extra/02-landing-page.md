@@ -41,13 +41,14 @@ Hoje faturo em média **R$ 4.200/mês** com unhas de gel, atendendo por agenda, 
 ## [O que você recebe — oferta]
 ### Ao entrar hoje, você recebe:
 - ✅ Curso completo Unhas de Ouro™ (+40 videoaulas em HD) — de R$ 997 por **R$ 97**
-- 🎁 BÔNUS 1: Kit de Precificação e Tabela de Preços — R$ 97 (grátis hoje)
-- 🎁 BÔNUS 2: Script de Atendimento e Fechamento de Clientes — R$ 147 (grátis hoje)
-- 🎁 BÔNUS 3: Certificado de Conclusão — R$ 67 (grátis hoje)
-- 🎁 BÔNUS 4: Grupo VIP de Alunas no WhatsApp — Inestimável
+- 🎁 BÔNUS 1: Script de Atendimento e Fechamento de Clientes — R$ 147 (grátis hoje)
+- 🎁 BÔNUS 2: Certificado de Conclusão — R$ 67 (grátis hoje)
+- 🎁 BÔNUS 3: Grupo VIP de Alunas no WhatsApp — Inestimável
 
-**Valor total: R$ 1.308,00**
+**Valor total: R$ 1.211,00**
 **Hoje, por apenas: R$ 97,00 (ou 12x de R$ 9,71)**
+
+`[No checkout]` você ainda vai ver uma oferta única e por tempo limitado de uma ferramenta avançada de precificação por apenas R$ 27 a mais — copy completo em `09-order-bump-upsell-downsell.md`.
 
 `[Botão CTA]` 👉 QUERO GARANTIR MINHA VAGA COM DESCONTO
 

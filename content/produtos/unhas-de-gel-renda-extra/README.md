@@ -15,6 +15,7 @@ Pacote completo de marketing e conteúdo para o primeiro produto piloto da Máqu
 | [`06-conteudo-gratuito-60.md`](./06-conteudo-gratuito-60.md) | Roteiro do conteúdo gratuito (desafio de 3 dias) |
 | [`07-conteudo-pago-40.md`](./07-conteudo-pago-40.md) | Estrutura do produto pago (módulos + bônus) |
 | [`08-sequencia-emails.md`](./08-sequencia-emails.md) | Sequência de e-mails/WhatsApp do funil |
+| [`09-order-bump-upsell-downsell.md`](./09-order-bump-upsell-downsell.md) | Copy do order bump, upsells e downsell da esteira de checkout |
 
 ## Próximos passos sugeridos
 

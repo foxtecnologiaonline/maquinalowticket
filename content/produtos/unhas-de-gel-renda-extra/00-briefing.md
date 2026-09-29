@@ -47,12 +47,17 @@
 
 - **Nome do produto**: Método Unhas de Ouro™ (ou variação — testar 3 nomes, ver `05-nomes-e-headlines.md`)
 - **Formato**: curso em vídeo + PDFs + grupo de suporte
-- **Preço ancora**: R$ 297 (de R$ 997)
-- **Ticket de entrada real**: R$ 97–147 (faixa low ticket)
-- **Order bump**: "Kit de Precificação e Tabela de Preços para Manicures" — R$ 27
-- **Upsell 1**: "Turma VIP com mentoria ao vivo" — R$ 197
-- **Upsell 2**: "Certificado + Marketing para Manicures (como divulgar no Instagram)" — R$ 97
-- **Downsell** (para quem recusar oferta principal): módulo avulso "Unhas Decoradas Básico" — R$ 47
+- **Preço de tabela**: R$ 997 · **Preço de lançamento (ticket de entrada)**: R$ 97
+- **Bônus grátis inclusos no R$ 97** (sem custo adicional, valor de venda casado com `02-landing-page.md`):
+  - Script de Atendimento e Fechamento de Clientes — valor R$ 147
+  - Certificado de Conclusão — valor R$ 67
+  - Grupo VIP de Alunas no WhatsApp — inestimável
+- **Order bump** (oferecido só no checkout, não é bônus grátis): "Calculadora de Precificação Avançada + Tabela de Preços Regionalizada" — R$ 27
+- **Upsell 1**: "Turma VIP com Mentoria ao Vivo + Módulo de Escala" — R$ 197
+- **Upsell 2**: "Kit de Divulgação e Marketing para Manicures (templates de posts/stories/anúncios)" — R$ 97
+- **Downsell** (para quem recusar a oferta principal): módulo avulso "Unhas Decoradas Básico" — R$ 47
+
+> ⚠️ Regra de consistência: cada item da oferta aparece em UM único lugar da esteira (bônus grátis OU order bump OU upsell), nunca em dois ao mesmo tempo. Ver copy completo do order bump/upsell/downsell em `09-order-bump-upsell-downsell.md`.
 
 ## 6. Metodologia de conteúdo 60/40
 

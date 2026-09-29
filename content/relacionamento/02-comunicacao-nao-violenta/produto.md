@@ -70,7 +70,7 @@
 - 20 conversas reescritas prontas para usar essa semana
 - Ritual de 20 minutos por semana que evita 80% dos atritos
 
-**Prova social**: depoimentos de casais ("Depois de 8 anos juntos, foi a primeira vez que discutimos dinheiro sem gritar.")
+**Prova social** — ⚠️ exemplo de estilo, não depoimento real. Substituir por depoimento autêntico e autorizado antes de publicar (fabricar prova social viola política do Google/Meta Ads e regras de conteúdo da Hotmart): [ex. de estilo] "Depois de 8 anos juntos, foi a primeira vez que discutimos dinheiro sem gritar." — Iniciais/idade reais do cliente
 
 **Oferta**: R$37 (ancorar em R$67) + bônus
 **Garantia**: 7 dias

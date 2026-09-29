@@ -62,7 +62,7 @@
 
 **Vilão**: "Todo mundo trata relacionamento à distância como 'aguentar' até acabar — não como algo que se constrói com estrutura, igual qualquer outro relacionamento."
 
-**Mecanismo único**: Guia com as 3 fases do RAD, rituais de conexão e plano de reencontro — testado com casais que atravessaram de 6 meses a 3 anos de distância.
+**Mecanismo único**: Guia com as 3 fases do RAD, rituais de conexão e plano de reencontro, pensado para casais que atravessam de meses a anos de distância. *(só citar "testado com X casais" se houver número real e auditável)*
 
 **Bullets**:
 - Saiba em qual das 3 fases vocês estão (e o que fazer em cada uma)

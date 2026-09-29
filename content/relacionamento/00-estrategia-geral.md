@@ -76,6 +76,18 @@ O gratuito precisa ser bom o suficiente para gerar resultado parcial — isso é
 - Taxa de order bump: 25–35%
 - Ticket médio com upsell: R$55–R$70
 
+## 8. ⚠️ Compliance — leitura obrigatória antes de rodar tráfego
+
+Nicho de relacionamento é sensível para as plataformas de anúncio e para a Hotmart. Antes de publicar qualquer peça:
+
+- **Prova social**: todo depoimento marcado como "exemplo de estilo" nos arquivos de produto é fictício e serve só de referência de tom. Nunca publicar sem substituir por depoimento real, com consentimento explícito do cliente (print, vídeo ou texto). Depoimento fabricado é motivo de reprovação de conta no Google Ads, Meta Ads e Hotmart.
+- **Números/estatísticas** ("+X alunos", "+X casos"): só usar com dado real e auditável. Até lá, usar linguagem qualitativa ("estrutura testada", "passo a passo validado") em vez de números inventados.
+- **Google Ads — Personalização de anúncios**: conteúdo sobre traição/término/crise de relacionamento pode cair na política de "conteúdo pessoal sensível" (relacionamentos e situações de vida). Isso restringe remarketing/segmentação por interesse em alguns casos — a campanha ainda roda, mas sem alguns tipos de segmentação personalizada. Validar a peça no Editor de Políticas do Google Ads antes do lançamento.
+- **Meta Ads**: evitar linguagem que implique estado emocional do usuário diretamente ("você está sofrendo por traição") — a política de anúncios pessoais do Meta proíbe atribuir uma condição pessoal específica ao leitor. Preferir formulações em 3ª pessoa ou pergunta aberta ("Quem passou por uma traição sabe: ...").
+- **Hotmart**: produtos de relacionamento/autoajuda entram na categoria que exige clareza de que não substitui terapia/aconselhamento profissional. Incluir disclaimer no produto e na LP: *"Este material é educativo e não substitui acompanhamento psicológico profissional."*
+- **Garantia de 7 dias**: obrigatória por lei (CDC, direito de arrependimento em compra online) — nunca reduzir ou remover.
+- **Promessas de resultado**: nunca garantir "reconquista garantida" ou similar — usar "aumenta a clareza/chance", nunca certeza de resultado sobre a vontade de terceiros.
+
 ---
 
 Detalhamento por produto nos arquivos:

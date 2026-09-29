@@ -56,7 +56,7 @@
 
 **Headline**: "Ela(e) te traiu. Você não sabe se briga, se implora ou se some. Existe um caminho — e não é nenhum dos dois."
 
-**Subheadline**: O Método Recomeço já ajudou +2.400 pessoas a decidir com clareza entre reconquistar ou seguir em frente — sem se humilhar no processo.
+**Subheadline**: O Método Recomeço já ajudou [Nº REAL DE ALUNOS] pessoas a decidir com clareza entre reconquistar ou seguir em frente — sem se humilhar no processo. *(placeholder — só publicar com número real e auditável; não inventar)*
 
 **Agitação**:
 > Você já releu a última conversa umas 50 vezes procurando um sinal.
@@ -66,7 +66,7 @@
 
 **Vilão**: "A internet te dá dois conselhos opostos: 'corte contato e sofra sozinho(a)' ou 'lute pelo seu amor'. Nenhum dos dois é um método — são clichês. Falta o passo a passo real."
 
-**Mecanismo único**: "Método Recomeço — protocolo de 21 dias criado a partir de +180 casos reais, dividido em 4 fases que funcionam tanto para reconquistar quanto para superar com dignidade."
+**Mecanismo único**: "Método Recomeço — protocolo de 21 dias dividido em 4 fases que funcionam tanto para reconquistar quanto para superar com dignidade." *(evitar número de "casos reais" sem base auditável — troque por "validado com especialistas em relacionamento" ou número real quando existir)*
 
 **Bullets de benefício**:
 - Saiba exatamente o que dizer (e o que jamais dizer) nas primeiras 72 horas
@@ -74,9 +74,9 @@
 - Descubra em qual das 2 estradas você está (reconquista real x negação) antes de perder mais tempo
 - Recupere sua autoestima mesmo que decida não voltar
 
-**Prova social** (exemplos-modelo, substituir por depoimentos reais):
-- "Em 12 dias segui o roteiro e tivemos a conversa que eu não conseguia ter sozinha." — J., 32
-- "O que mais me ajudou foi entender que eu tava fazendo tudo errado sem saber." — R., 28
+**Prova social** — ⚠️ os exemplos abaixo são MODELOS DE ESTILO, não depoimentos reais. Nunca publicar em anúncio/LP sem substituir por depoimento real e autorizado (print, vídeo ou texto com consentimento explícito do cliente) — depoimento fabricado viola política de anúncios do Google/Meta e regras de conteúdo da Hotmart:
+- [ex. de estilo] "Em 12 dias segui o roteiro e tivemos a conversa que eu não conseguia ter sozinha." — Iniciais/Idade reais do cliente
+- [ex. de estilo] "O que mais me ajudou foi entender que eu tava fazendo tudo errado sem saber." — Iniciais/Idade reais do cliente
 
 **Oferta**: De R$97 por R$37 hoje (ancoragem) + bônus Kit de Frases (R$47 de valor, grátis)
 **Garantia**: 7 dias, 100% do dinheiro de volta, sem perguntas
@@ -105,7 +105,7 @@ Negativas: grátis, denúncia, vingança, hacker, rastrear celular, processo, ad
 - Título 1: Foi Traído(a)? Saiba o Que Fazer
 - Título 2: Método com 21 Dias de Protocolo
 - Título 3: Reconquiste ou Supere com Clareza
-- Descrição 1: Descubra se ainda há chance real de reconstrução. Passo a passo testado em +180 casos.
+- Descrição 1: Descubra se ainda há chance real de reconstrução. Passo a passo estruturado em 4 fases claras.
 - Descrição 2: Pare de agir por impulso. Scripts prontos para cada etapa. Garantia de 7 dias.
 
 ### Meta Ads (Feed/Reels) — Público Frio

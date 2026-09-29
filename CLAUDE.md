@@ -241,12 +241,21 @@ OPENAI_API_KEY=sk_...
 ## 📊 API Endpoints (FASE 1)
 
 ```
+POST   /api/auth/signup        Cria conta (sempre role 'owner' — sem fluxo multi-tenant ainda)
+POST   /api/auth/signin        Login, retorna { user, token, refreshToken }
+GET    /api/auth/me            Retorna o usuário do token atual (útil para testar o login)
 POST   /api/products           Create product via factory
 GET    /api/products           List user's products
 GET    /api/products/:id       Get specific product
 PUT    /api/products/:id       Update product
 DELETE /api/products/:id       Archive product
 ```
+
+**Seed de templates**: `packages/database/seed.sql` cria 4 templates ativos (um por tipo:
+course/template/content/service) com UUIDs fixos (`00000000-0000-0000-0000-00000000000{1..4}`),
+necessários para `POST /api/products` funcionar em um banco novo. Aplicado automaticamente
+pelo `docker-compose up` (montado como `02-seed.sql`) ou manualmente via
+`pnpm --filter @maquinalowticket/database seed`.
 
 ## 🤖 Marketing Agent (Autônomo — analisa e recomenda, não executa gasto)
 

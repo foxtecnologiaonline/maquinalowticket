@@ -1,12 +1,17 @@
+// Must be the first import: ES module imports are evaluated in source order
+// before any other top-level statement in this file runs, so a later
+// `dotenv.config()` call would load .env only *after* every router below
+// has already been evaluated — too late for any module-level code that
+// reads process.env (e.g. a JWT secret computed as a top-level constant).
+import 'dotenv/config';
+
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import { initializeDatabase } from './services/database';
 import { startMarketingScheduler } from './services/scheduler';
+import authRouter from './routes/auth';
 import productsRouter from './routes/products';
 import marketingRouter from './routes/marketing';
-
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -28,6 +33,7 @@ app.get('/health', (_req, res) => {
 });
 
 // Routes
+app.use('/api/auth', authRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/marketing', marketingRouter);
 

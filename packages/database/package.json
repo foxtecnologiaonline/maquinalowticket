@@ -6,7 +6,8 @@
   "description": "Database schemas and migrations",
   "scripts": {
     "migrate:up": "psql $DATABASE_URL < schema.sql",
-    "migrate:down": "psql $DATABASE_URL -f migrations/rollback.sql"
+    "migrate:down": "psql $DATABASE_URL -f migrations/rollback.sql",
+    "seed": "psql $DATABASE_URL < seed.sql"
   },
   "devDependencies": {
     "prisma": "^5.6.0"

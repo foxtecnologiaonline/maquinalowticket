@@ -57,7 +57,7 @@ Estrutura de copy condutora (straight-line persuasion) usada em toda LP/VSL/emai
 9. **Urgência/Escassez** — motivo real para agir agora.
 10. **CTA repetido** — a cada 2-3 seções da página.
 
-### 2.1 Fórmula de headline (usar no `templates.ts` como campo `headline_formula`)
+### 2.1 Fórmula de headline (persistir em `templates.content.copy.headlineFormula`, coluna JSONB `content` da tabela `templates`)
 
 ```
 [Resultado desejado] sem [maior objeção/dor], mesmo que [maior crença limitante]
@@ -66,24 +66,20 @@ Exemplo: "Saia do cheque especial em 30 dias sem cortar tudo que você gosta, me
 
 ---
 
-## 3. Estrutura de Landing Page (para `LandingPageEngine.ts`)
+## 3. Estrutura de Landing Page (para `LandingPageEngine.ts`, FASE 2)
 
-Seções padrão, na ordem, mapeando para `landing_pages` no schema:
+A tabela `landing_pages` (`packages/database/schema.sql`) já define 6 colunas `JSONB`. O `LandingPageEngine` deve gerar cada uma a partir do `ProductFactoryInput` + `templates.content`, agrupando a estrutura de copy da seção 2 assim:
 
-1. Header com headline + subheadline + CTA acima da dobra
-2. Vídeo de vendas (VSL) ou bloco de texto de dor/identificação
-3. "Para quem é" / "Para quem não é"
-4. Mecanismo único / método
-5. Módulos do produto (o que está dentro)
-6. Prova social (depoimentos, prints, número de alunos)
-7. Sobre o criador (autoridade)
-8. Oferta + stack de valor + preço + parcelamento
-9. Garantia
-10. FAQ (objeções antecipadas)
-11. CTA final + escassez/urgência
-12. Rodapé (suporte, termos, contato)
+| Coluna JSONB (schema real) | Conteúdo de copy que ela carrega |
+|---|---|
+| `hero_section` | Header (headline + subheadline + CTA acima da dobra), VSL/bloco de dor-identificação, "para quem é / não é" |
+| `benefits_section` | Mecanismo único, módulos do produto (o que está dentro), stack de valor |
+| `pricing_section` | Preço ancorado, parcelamento, garantia, urgência/escassez |
+| `testimonials_section` | Prova social (depoimentos, prints, nº de alunos) e autoridade do criador |
+| `faq_section` | Objeções antecipadas (usar a lista de objeções do nicho, seção 6) |
+| `cta_section` | CTA final + rodapé (suporte, termos, contato) |
 
-Cada seção deve ser um bloco JSON reutilizável no template engine, permitindo gerar a LP automaticamente a partir do `ProductFactoryInput`.
+CTAs intermediários (a cada 2-3 blocos, regra da seção 2) ficam embutidos dentro de `hero_section` e `benefits_section` como sub-chaves (`cta`), não como coluna própria — evita alterar o schema existente.
 
 ---
 
@@ -165,7 +161,9 @@ Priorização sugerida (maior dor/urgência → maior ticket potencial):
 
 ---
 
-## 7. Checklist de lançamento por produto (usar no `ProductFactoryInput.automations`)
+## 7. Checklist de lançamento por produto
+
+> Referência operacional para quem roda o lançamento; os itens de automação de fato acionáveis pelo sistema (email, remarketing, analytics) devem ser cadastrados como IDs em `ProductFactoryInput.automations: string[]` (ver `packages/shared-types/product.ts`).
 
 - [ ] Pesquisa de dor + keywords do nicho
 - [ ] Roteiro do conteúdo grátis (60%) com CTA de continuidade

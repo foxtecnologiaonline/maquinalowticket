@@ -17,11 +17,12 @@ export function authMiddleware(req: AuthRequest, res: Response, next: NextFuncti
   const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : authHeader;
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'secret') as any;
+    // JWT_SECRET presence is validated once at server startup (see index.ts)
+    const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as any;
     req.userId = decoded.userId;
     req.email = decoded.email;
     req.role = decoded.role;
-    next();
+    return next();
   } catch (error) {
     return res.status(401).json({ error: 'Invalid token' });
   }
@@ -32,6 +33,6 @@ export function requireRole(...roles: string[]) {
     if (!req.role || !roles.includes(req.role)) {
       return res.status(403).json({ error: 'Insufficient permissions' });
     }
-    next();
+    return next();
   };
 }

@@ -1,34 +1,76 @@
 import { v4 as uuidv4 } from 'uuid';
-import { query, queryOne } from './database';
+import { PoolClient } from 'pg';
+import { query, queryOne, withTransaction } from './database';
 import { ProductFactoryInput, ProductFactoryOutput } from '@maquinalowticket/shared-types';
 import { generateSlug } from '@maquinalowticket/utils';
 
+const SLUG_UNIQUE_VIOLATION = '23505';
+
 export class FactoryEngine {
   /**
-   * Main factory method - receives structured input and creates a complete product
+   * Main factory method - receives structured input and creates a complete product.
+   * Runs in a single DB transaction so a failure at any step leaves no
+   * partial product/landing-page/automation rows behind.
    */
   async createProduct(userId: string, input: ProductFactoryInput): Promise<ProductFactoryOutput> {
+    // 1. Validate inputs
+    this.validateInputs(input);
+
     const productId = uuidv4();
+    const baseSlug = generateSlug(input.title);
 
-    try {
-      // 1. Validate inputs
-      this.validateInputs(input);
-
-      // 2. Generate slug from title
-      const slug = generateSlug(input.title);
-
-      // 3. Fetch template
-      const template = await queryOne(
+    return withTransaction(async (client) => {
+      // 2. Fetch template
+      const templateResult = await client.query(
         'SELECT * FROM templates WHERE id = $1 AND active = true',
         [input.templateId]
       );
+      const template = templateResult.rows[0];
 
       if (!template) {
         throw new Error(`Template ${input.templateId} not found or inactive`);
       }
 
-      // 4. Create product in database
-      await query(
+      // 3. Create product in database (retry once with a unique suffix on slug collision)
+      const slug = await this.insertProductWithUniqueSlug(client, productId, baseSlug, userId, input, template);
+
+      // 4. Setup landing page
+      const landingPageUrl = await this.setupLandingPage(client, productId, slug, input, template);
+
+      // 5. Setup automations
+      await this.setupAutomations(client, productId, input.automations, template);
+
+      // 6. Setup email sequences
+      await this.setupEmailSequences(client, productId, template);
+
+      // 7. Activate analytics tracking
+      await this.activateAnalytics(client, productId);
+
+      // 8. Publish product
+      await client.query(
+        'UPDATE products SET status = $1, published_at = CURRENT_TIMESTAMP WHERE id = $2',
+        ['published', productId]
+      );
+
+      return {
+        productId,
+        landingPageUrl,
+        funnelSetup: true,
+        analyticsActive: true,
+      };
+    });
+  }
+
+  private async insertProductWithUniqueSlug(
+    client: PoolClient,
+    productId: string,
+    baseSlug: string,
+    userId: string,
+    input: ProductFactoryInput,
+    template: any
+  ): Promise<string> {
+    const attemptSlug = async (slug: string) => {
+      await client.query(
         `INSERT INTO products (id, user_id, title, slug, description, type, price, status, template_id, content_data, tags)
          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`,
         [
@@ -45,35 +87,19 @@ export class FactoryEngine {
           input.category ? [input.category] : [],
         ]
       );
+    };
 
-      // 5. Setup landing page
-      const landingPageUrl = await this.setupLandingPage(productId, slug, input, template);
-
-      // 6. Setup automations
-      await this.setupAutomations(productId, input.automations, template);
-
-      // 7. Setup email sequences
-      await this.setupEmailSequences(productId, template);
-
-      // 8. Activate analytics tracking
-      await this.activateAnalytics(productId);
-
-      // 9. Publish product
-      await query(
-        'UPDATE products SET status = $1, published_at = CURRENT_TIMESTAMP WHERE id = $2',
-        ['published', productId]
-      );
-
-      return {
-        productId,
-        landingPageUrl,
-        funnelSetup: true,
-        analyticsActive: true,
-      };
-    } catch (error) {
-      // Rollback if something fails
-      await query('DELETE FROM products WHERE id = $1', [productId]);
-      throw error;
+    try {
+      await attemptSlug(baseSlug);
+      return baseSlug;
+    } catch (error: any) {
+      if (error.code !== SLUG_UNIQUE_VIOLATION) {
+        throw error;
+      }
+      // Title already used elsewhere — disambiguate with a short unique suffix
+      const uniqueSlug = `${baseSlug}-${productId.slice(0, 8)}`;
+      await attemptSlug(uniqueSlug);
+      return uniqueSlug;
     }
   }
 
@@ -106,6 +132,7 @@ export class FactoryEngine {
   }
 
   private async setupLandingPage(
+    client: PoolClient,
     productId: string,
     slug: string,
     input: ProductFactoryInput,
@@ -113,7 +140,7 @@ export class FactoryEngine {
   ): Promise<string> {
     const landingPageId = uuidv4();
 
-    await query(
+    await client.query(
       `INSERT INTO landing_pages (id, product_id, slug, title, hero_section, benefits_section, published)
        VALUES ($1, $2, $3, $4, $5, $6, $7)`,
       [
@@ -135,6 +162,7 @@ export class FactoryEngine {
   }
 
   private async setupAutomations(
+    client: PoolClient,
     productId: string,
     automationIds: string[],
     template: any
@@ -148,7 +176,7 @@ export class FactoryEngine {
 
       if (!automationDef) continue;
 
-      await query(
+      await client.query(
         `INSERT INTO automations (id, product_id, name, trigger_type, trigger_config, actions, active)
          VALUES ($1, $2, $3, $4, $5, $6, $7)`,
         [
@@ -164,7 +192,7 @@ export class FactoryEngine {
     }
   }
 
-  private async setupEmailSequences(productId: string, template: any): Promise<void> {
+  private async setupEmailSequences(client: PoolClient, productId: string, template: any): Promise<void> {
     if (!template.email_sequence) {
       return;
     }
@@ -174,7 +202,7 @@ export class FactoryEngine {
     for (let i = 0; i < sequence.sequence.length; i++) {
       const step = sequence.sequence[i];
 
-      await query(
+      await client.query(
         `INSERT INTO email_templates (id, product_id, name, subject, html_content, text_content, sequence_order, delay_minutes, active)
          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
         [
@@ -192,11 +220,11 @@ export class FactoryEngine {
     }
   }
 
-  private async activateAnalytics(productId: string): Promise<void> {
+  private async activateAnalytics(client: PoolClient, productId: string): Promise<void> {
     // Create first analytics record for today
     const today = new Date().toISOString().split('T')[0];
 
-    await query(
+    await client.query(
       `INSERT INTO analytics (id, product_id, date, views, clicks, conversions, revenue)
        VALUES ($1, $2, $3, $4, $5, $6, $7)
        ON CONFLICT (product_id, date) DO NOTHING`,

@@ -9,7 +9,7 @@ node_modules/
 # Production
 /build
 /dist
-/.next
+.next/
 /out
 
 # Misc
@@ -40,3 +40,5 @@ Thumbs.db
 # Cache
 .eslintcache
 .turbo
+*.tsbuildinfo
+next-env.d.ts

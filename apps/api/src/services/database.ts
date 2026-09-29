@@ -1,4 +1,4 @@
-import { Pool } from 'pg';
+import { Pool, PoolClient } from 'pg';
 
 let pool: Pool;
 
@@ -40,4 +40,24 @@ export async function query(text: string, params?: any[]) {
 export async function queryOne(text: string, params?: any[]) {
   const results = await query(text, params);
   return results[0] || null;
+}
+
+/**
+ * Runs `fn` inside a single BEGIN/COMMIT transaction on one dedicated
+ * client, rolling back automatically if `fn` throws.
+ */
+export async function withTransaction<T>(fn: (client: PoolClient) => Promise<T>): Promise<T> {
+  const db = getDatabase();
+  const client = await db.connect();
+  try {
+    await client.query('BEGIN');
+    const result = await fn(client);
+    await client.query('COMMIT');
+    return result;
+  } catch (error) {
+    await client.query('ROLLBACK');
+    throw error;
+  } finally {
+    client.release();
+  }
 }

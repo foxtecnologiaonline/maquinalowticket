@@ -34,11 +34,15 @@ ENTREGA + PÓS-VENDA (grupo VIP, prova social contínua)
 | Campo | Valor |
 |---|---|
 | Nome | Fábrica de Potes Lucrativos |
-| Tipo | `content` (curso digital + kit comercial) |
-| Preço | R$ 47,00 (entrada) → Order Bump R$ 27 → Upsell R$ 97 |
+| Slug | `fabrica-de-potes-lucrativos` |
+| Tipo (`ProductType`) | `course` (vídeo-aulas em módulos + materiais de apoio) |
+| Categoria | Culinária |
+| Preço | R$ 47,00 (entrada) → Order Bump R$ 27 → Upsell R$ 97 (moeda: BRL) |
 | Formato | PDF + vídeo-aulas curtas (3-8 min) + planilha de precificação + templates de rótulo (Canva) |
 | Promessa central | "Transforme R$50 em ingredientes em até R$800/semana vendendo doces em pote, mesmo sem experiência em confeitaria ou vender antes" |
 | Avatar | Mulheres 25-45 anos, mães, donas de casa, querem renda extra, gostam de cozinhar, ativas no Instagram/WhatsApp |
+
+> Nota técnica: `type` usa o enum `ProductType` definido em `packages/shared-types/product.ts` (`'course' | 'template' | 'content' | 'service'`). Corrigido de `content` para `course` nesta revisão — o produto é estruturado em módulos de vídeo-aula, não em conteúdo avulso, e isso importa para como o `FactoryEngine` e o dashboard classificam/filtram o produto.
 
 ---
 
@@ -64,6 +68,7 @@ ENTREGA + PÓS-VENDA (grupo VIP, prova social contínua)
 1. **Módulo 1 — Mentalidade & Precificação**
    - Planilha automática de precificação (custo + embalagem + mão de obra + margem)
    - Como calcular ponto de equilíbrio e meta de vendas semanal
+   - Guia rápido de formalização (venda caseira dentro da lei, quando abrir MEI, o que a vigilância sanitária local costuma exigir) — cobre a objeção legal antes que ela trave a venda
 2. **Módulo 2 — +20 Receitas Premium e Sazonais**
    - Receitas por data comemorativa (Páscoa, Dia das Mães, Festa Junina, Natal)
    - Receitas "close" (fechamento) de maior ticket: torta no pote, red velvet no pote, doce fitness/low carb no pote (upsell natural para nicho fit)
@@ -141,6 +146,7 @@ ENTREGA + PÓS-VENDA (grupo VIP, prova social contínua)
 2. *"Não tenho tempo, sou muito ocupada."* → O método de produção em lote resolve isso: 1 dia de produção = estoque para a semana.
 3. *"E se eu não conseguir vender?"* → Você recebe os scripts prontos de venda e ainda tem garantia de 7 dias.
 4. *"Recebo o acesso na hora?"* → Sim, acesso liberado imediatamente após a confirmação do pagamento.
+5. *"Preciso de CNPJ ou registro na vigilância sanitária para vender?"* → O curso te ensina a começar como produção caseira/MEI dentro do que a lei permite (venda direta, sem intermediários), e traz um guia simples de como formalizar quando o negócio crescer. Você não precisa esperar ficar 100% regularizada para dar o primeiro passo.
 
 ### 5.9 CTA final (fechamento em linha reta)
 > Você tem duas escolhas agora: continuar adiando essa renda extra, ou dar o primeiro passo hoje e começar a vender seus doces em pote essa semana.
@@ -251,8 +257,8 @@ Palavras-chave (correspondência de frase/exata):
 ## 10. Próximos Passos de Execução
 
 1. Gravar/fotografar as 4 receitas do material gratuito
-2. Montar a LP no `apps/dashboard` usando este copy (seção 5)
-3. Configurar automação de e-mail (seção 6) na ferramenta de e-mail integrada
+2. Publicar a LP com o copy da seção 5. **Atenção**: o `apps/dashboard` hoje é só o painel admin (`app/layout.tsx` + `app/page.tsx`) e o `apps/api` só expõe CRUD de produtos (`routes/products.ts`) — não existe ainda gerador de landing page nem `apps/landing` (isso está previsto para a FASE 3 do `CLAUDE.md`, ainda não implementada). Até lá, publique esta LP numa ferramenta externa (ex: página estática, builder de checkout/Hotmart) e trate a integração com o dashboard como item de backlog da FASE 3, não como passo imediato.
+3. Configurar automação de e-mail (seção 6) na ferramenta de e-mail/checkout usada (a automação de e-mail própria também é item de backlog — não está implementada em `apps/api` ainda)
 4. Subir campanha de Google Ads (seção 7) com orçamento de teste (R$20-30/dia)
 5. Subir campanha de Meta Ads (seção 8) em paralelo, testando 3 criativos
 6. Após 50 cliques/leads, revisar CTR e CPL antes de escalar orçamento

@@ -2,7 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { initializeDatabase } from './services/database';
+import { startMarketingScheduler } from './services/scheduler';
 import productsRouter from './routes/products';
+import marketingRouter from './routes/marketing';
 
 dotenv.config();
 
@@ -27,6 +29,7 @@ app.get('/health', (req, res) => {
 
 // Routes
 app.use('/api/products', productsRouter);
+app.use('/api/marketing', marketingRouter);
 
 // 404 handler
 app.use((req, res) => {
@@ -46,6 +49,8 @@ async function start() {
   try {
     initializeDatabase();
     console.log('Database initialized');
+
+    startMarketingScheduler();
 
     app.listen(PORT, () => {
       console.log(`🏭 Factory API running at http://localhost:${PORT}`);

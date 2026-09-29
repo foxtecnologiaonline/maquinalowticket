@@ -47,6 +47,12 @@ services:
       JWT_SECRET: dev-secret-key-min-32-characters-long
       API_URL: http://localhost:3001
       NEXT_PUBLIC_API_URL: http://localhost:3001
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4o-mini}
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+      MARKETING_REPORT_EMAIL_FROM: ${MARKETING_REPORT_EMAIL_FROM:-}
+      MARKETING_AGENT_ENABLED: ${MARKETING_AGENT_ENABLED:-false}
+      MARKETING_AGENT_CRON: ${MARKETING_AGENT_CRON:-0 8 * * *}
     ports:
       - '3001:3001'
     volumes:

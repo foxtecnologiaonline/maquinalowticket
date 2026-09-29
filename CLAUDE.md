@@ -248,6 +248,41 @@ PUT    /api/products/:id       Update product
 DELETE /api/products/:id       Archive product
 ```
 
+## 🤖 Marketing Agent (Autônomo — analisa e recomenda, não executa gasto)
+
+Serviço `apps/api/src/services/MarketingAgent.ts` que roda ciclos de análise (manual ou
+agendado via cron) sobre `products`, `orders`, `analytics` e `landing_pages` de um usuário,
+usando um LLM (OpenAI) com schema de resposta versionado e validado. Gera um
+`marketing_report` + `marketing_recommendations`, envia um resumo por e-mail (Resend), e
+fica disponível no dashboard.
+
+**Modelo de autonomia**: o agente analisa e recomenda; toda ação com custo real (tráfego
+pago, publicação) exige aprovação humana explícita via
+`POST /api/marketing/recommendations/:id/approve`. Nenhuma execução automática de gasto ou
+publicação existe nesta versão — está em **modo planejamento**, pois as integrações reais
+(Meta Ads, Google Ads, redes sociais) ainda não estão conectadas.
+
+```
+POST   /api/marketing/run                          Roda um ciclo de análise agora
+GET    /api/marketing/reports                       Lista relatórios do usuário
+GET    /api/marketing/reports/:id                    Relatório + recomendações
+GET    /api/marketing/recommendations?status=pending Lista recomendações
+POST   /api/marketing/recommendations/:id/approve    Aprova recomendação (registra decisão)
+POST   /api/marketing/recommendations/:id/reject     Rejeita recomendação
+```
+
+**Execução autônoma agendada**: controlada por `MARKETING_AGENT_ENABLED=true` e
+`MARKETING_AGENT_CRON` (padrão diário 08:00). Quando ativo, roda um ciclo por usuário ativo
+e envia relatório por e-mail automaticamente — falha em um usuário não interrompe os demais.
+
+**Tabelas**: `marketing_reports`, `marketing_recommendations` (ver
+`packages/database/schema.sql`). Decisões de aprovação/rejeição também são gravadas em
+`audit_logs` para rastreabilidade.
+
+**Limitação conhecida**: requer `OPENAI_API_KEY` configurada; sem ela, o ciclo persiste um
+relatório de fallback com `data_sufficient=false` em vez de falhar silenciosamente ou
+inventar dados.
+
 ## 🧪 Testing Strategy (Ready for FASE 2)
 
 - **Unit Tests**: vitest in each app
@@ -276,10 +311,11 @@ DELETE /api/products/:id       Archive product
 
 ### 📋 FASE 3: Automation (AFTER FASE 2)
 - [ ] Workflow builder (visual interface)
-- [ ] Email automation service
+- [x] Email automation service (Resend integration via `EmailService.ts`, usado hoje para relatórios do Marketing Agent)
 - [ ] Stripe payment integration
 - [ ] File delivery system
 - [ ] Webhook handling
+- [x] Marketing Agent autônomo (análise + recomendações; ver seção "🤖 Marketing Agent")
 
 ### 📊 FASE 4: Analytics & Polish (AFTER FASE 3)
 - [ ] Real-time dashboard

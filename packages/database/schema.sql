@@ -182,6 +182,42 @@ CREATE INDEX idx_audit_logs_user ON audit_logs(user_id);
 CREATE INDEX idx_audit_logs_entity ON audit_logs(entity_type, entity_id);
 CREATE INDEX idx_audit_logs_created ON audit_logs(created_at DESC);
 
+-- Marketing Agent Reports (autonomous analysis cycles)
+CREATE TABLE marketing_reports (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  cycle_type VARCHAR(50) NOT NULL CHECK (cycle_type IN ('daily', 'weekly', 'manual')),
+  summary TEXT NOT NULL,
+  metrics JSONB NOT NULL DEFAULT '{}',
+  anomalies JSONB NOT NULL DEFAULT '[]',
+  data_sufficient BOOLEAN NOT NULL DEFAULT true,
+  raw_response JSONB,
+  email_sent_at TIMESTAMP,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_marketing_reports_user ON marketing_reports(user_id);
+CREATE INDEX idx_marketing_reports_created ON marketing_reports(created_at DESC);
+
+-- Marketing Agent Recommendations (require human approval before execution)
+CREATE TABLE marketing_recommendations (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  report_id UUID NOT NULL REFERENCES marketing_reports(id) ON DELETE CASCADE,
+  user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  action TEXT NOT NULL,
+  reasoning TEXT,
+  expected_impact TEXT,
+  priority SMALLINT NOT NULL DEFAULT 3 CHECK (priority BETWEEN 1 AND 5),
+  reversible BOOLEAN NOT NULL DEFAULT true,
+  status VARCHAR(20) NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'rejected', 'expired')),
+  decided_at TIMESTAMP,
+  decided_by UUID REFERENCES users(id),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_marketing_recommendations_report ON marketing_recommendations(report_id);
+CREATE INDEX idx_marketing_recommendations_user_status ON marketing_recommendations(user_id, status);
+
 -- Updated at trigger function
 CREATE OR REPLACE FUNCTION update_updated_at_column()
 RETURNS TRIGGER AS $$

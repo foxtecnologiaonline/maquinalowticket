@@ -1,6 +1,7 @@
 import { Router, Response } from 'express';
 import { AuthRequest, authMiddleware } from '../middlewares/auth';
 import { factoryEngine } from '../services/FactoryEngine';
+import { query } from '../services/database';
 import { ProductFactoryInput } from '@maquinalowticket/shared-types';
 
 const router = Router();
@@ -58,11 +59,12 @@ router.get('/', async (req: AuthRequest, res: Response) => {
  */
 router.get('/:id', async (req: AuthRequest, res: Response) => {
   try {
-    const product = await factoryEngine.getProduct(req.params.id);
+    const product = await factoryEngine.getProduct(req.params.id!);
 
     // Check authorization
     if (product.user_id !== req.userId) {
-      return res.status(403).json({ error: 'Unauthorized' });
+      res.status(403).json({ error: 'Unauthorized' });
+      return;
     }
 
     res.json({
@@ -83,13 +85,14 @@ router.get('/:id', async (req: AuthRequest, res: Response) => {
  */
 router.put('/:id', async (req: AuthRequest, res: Response) => {
   try {
-    const { id } = req.params;
+    const id = req.params.id!;
     const { title, description, price, status } = req.body;
 
     // Verify ownership
     const product = await factoryEngine.getProduct(id);
     if (product.user_id !== req.userId) {
-      return res.status(403).json({ error: 'Unauthorized' });
+      res.status(403).json({ error: 'Unauthorized' });
+      return;
     }
 
     // Update product
@@ -115,12 +118,13 @@ router.put('/:id', async (req: AuthRequest, res: Response) => {
     }
 
     if (updates.length === 0) {
-      return res.status(400).json({ error: 'No fields to update' });
+      res.status(400).json({ error: 'No fields to update' });
+      return;
     }
 
     values.push(id);
 
-    await factoryEngine['query' as any](
+    await query(
       `UPDATE products SET ${updates.join(', ')} WHERE id = $${paramCount}`,
       values
     );
@@ -143,19 +147,17 @@ router.put('/:id', async (req: AuthRequest, res: Response) => {
  */
 router.delete('/:id', async (req: AuthRequest, res: Response) => {
   try {
-    const { id } = req.params;
+    const id = req.params.id!;
 
     // Verify ownership
     const product = await factoryEngine.getProduct(id);
     if (product.user_id !== req.userId) {
-      return res.status(403).json({ error: 'Unauthorized' });
+      res.status(403).json({ error: 'Unauthorized' });
+      return;
     }
 
     // Archive instead of delete
-    await factoryEngine['query' as any](
-      'UPDATE products SET status = $1 WHERE id = $2',
-      ['archived', id]
-    );
+    await query('UPDATE products SET status = $1 WHERE id = $2', ['archived', id]);
 
     res.json({
       success: true,

@@ -11,7 +11,8 @@ export function authMiddleware(req: AuthRequest, res: Response, next: NextFuncti
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {
-    return res.status(401).json({ error: 'Missing authorization header' });
+    res.status(401).json({ error: 'Missing authorization header' });
+    return;
   }
 
   const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : authHeader;
@@ -23,14 +24,15 @@ export function authMiddleware(req: AuthRequest, res: Response, next: NextFuncti
     req.role = decoded.role;
     next();
   } catch (error) {
-    return res.status(401).json({ error: 'Invalid token' });
+    res.status(401).json({ error: 'Invalid token' });
   }
 }
 
 export function requireRole(...roles: string[]) {
   return (req: AuthRequest, res: Response, next: NextFunction) => {
     if (!req.role || !roles.includes(req.role)) {
-      return res.status(403).json({ error: 'Insufficient permissions' });
+      res.status(403).json({ error: 'Insufficient permissions' });
+      return;
     }
     next();
   };

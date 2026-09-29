@@ -253,6 +253,7 @@ export class MarketingAgent {
           ? error.message
           : 'erro inesperado ao chamar o modelo';
       const fallback = await this.persistFallbackReport(userId, cycleType, reason);
+      await this.emailReport(userId, fallback);
       return fallback;
     }
 

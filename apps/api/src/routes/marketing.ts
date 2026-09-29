@@ -41,9 +41,10 @@ router.get('/reports', async (req: AuthRequest, res: Response) => {
  */
 router.get('/reports/:id', async (req: AuthRequest, res: Response) => {
   try {
-    const report = await marketingAgent.getReport(req.userId!, req.params.id);
+    const report = await marketingAgent.getReport(req.userId!, req.params.id!);
     if (!report) {
-      return res.status(404).json({ error: 'Report not found' });
+      res.status(404).json({ error: 'Report not found' });
+      return;
     }
     res.json({ success: true, data: report });
   } catch (error: any) {
@@ -72,7 +73,7 @@ router.get('/recommendations', async (req: AuthRequest, res: Response) => {
  */
 router.post('/recommendations/:id/approve', async (req: AuthRequest, res: Response) => {
   try {
-    const result = await marketingAgent.decideRecommendation(req.userId!, req.params.id, req.userId!, 'approved');
+    const result = await marketingAgent.decideRecommendation(req.userId!, req.params.id!, req.userId!, 'approved');
     res.json({ success: true, data: result });
   } catch (error: any) {
     console.error('Error approving recommendation:', error);
@@ -85,7 +86,7 @@ router.post('/recommendations/:id/approve', async (req: AuthRequest, res: Respon
  */
 router.post('/recommendations/:id/reject', async (req: AuthRequest, res: Response) => {
   try {
-    const result = await marketingAgent.decideRecommendation(req.userId!, req.params.id, req.userId!, 'rejected');
+    const result = await marketingAgent.decideRecommendation(req.userId!, req.params.id!, req.userId!, 'rejected');
     res.json({ success: true, data: result });
   } catch (error: any) {
     console.error('Error rejecting recommendation:', error);

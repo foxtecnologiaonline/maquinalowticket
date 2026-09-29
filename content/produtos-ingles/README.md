@@ -11,4 +11,6 @@ Pacote completo de estratégia low ticket (metodologia Hotmart/linha reta) para 
 
 Cada arquivo de produto contém: avatar, desenho do produto grátis (60%) e pago (100%), copy completa da landing page em linha reta, sequência de e-mail/WhatsApp, anúncios Google Search e Meta, lista de keywords (comercial + informacional + negativas) e sazonalidade recomendada.
 
-Uso pretendido: servir de `templateId`/insumo de conteúdo para o `FactoryEngine` (`apps/api/src/services`) ao criar esses produtos via `POST /api/products`, e de referência para quem for montar a LP em `apps/dashboard` e as campanhas de tráfego pago.
+Uso pretendido: servir de conteúdo-fonte para popular o campo `content` (JSONB) de uma linha na tabela `templates` (ver `packages/database/schema.sql`) para cada um dos 3 produtos. O `FactoryEngine` (`apps/api/src/services/FactoryEngine.ts`) busca o template pelo **UUID** gerado no `INSERT` (`WHERE id = $1 AND active = true`), não por um nome — portanto `input.templateId` em `POST /api/products` deve ser esse UUID, não um slug como `"ingles-low-ticket"`. Estes arquivos também servem de referência direta para quem for montar a LP em `apps/dashboard` e as campanhas de tráfego pago.
+
+> ⚠️ Nenhum destes 3 produtos foi inserido na tabela `templates` ainda — este pacote é conteúdo/copy pronto, não um template ativo no banco. Antes de criar produto via API, é necessário rodar um `INSERT INTO templates (...)` com o `content` derivado destes arquivos.

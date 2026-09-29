@@ -18,7 +18,7 @@ Conteúdo:
 
 Fica para o pago: simulações completas de diálogo por situação (compras, passeios, imprevistos/emergência médica, negociação/compras em outlet), pronúncia treinada com feedback, vocabulário por tipo de viagem (Disney, cruzeiro, mochilão, intercâmbio).
 
-## 3. Produto Pago (100%) — Core Offer — R$ 67
+## 3. Produto Pago (100%) — Core Offer — R$ 97
 
 **Nome**: "Inglês de Viagem — Do Aeroporto à Volta para Casa"
 
@@ -31,7 +31,7 @@ Módulos:
 6. Extra Cruzeiro
 7. Bônus: cartão de frases de emergência para imprimir/plastificar
 
-**Order bump (R$ 19)**: "Dicionário de Bolso de Viagem" em PDF/app.
+**Order bump (R$ 27)**: "Dicionário de Bolso de Viagem" em PDF/app.
 
 **Upsell (R$ 127)**: Aula ao vivo em grupo de simulação de situações de viagem antes do embarque.
 
@@ -61,7 +61,7 @@ Módulos:
 > "Fiz o curso 2 semanas antes de ir pra Orlando com a família e resolvi tudo sozinho, até um imprevisto no hotel." — [Nome]
 
 **Oferta**:
-> Guia completo por situação + áudios + bônus emergência. Por R$ 67 hoje.
+> Guia completo por situação + áudios + bônus emergência. Por R$ 97 hoje.
 
 **Urgência/Escassez**:
 > Promoção válida até [data] ou enquanto durarem os bônus de lançamento.
@@ -97,7 +97,7 @@ Módulos:
 - Inglês para Intercâmbio Curto
 
 **Descriptions (4)**:
-- "Aprenda o inglês essencial de aeroporto, hotel e restaurante antes de embarcar. Só R$ 67."
+- "Aprenda o inglês essencial de aeroporto, hotel e restaurante antes de embarcar. Só R$ 97."
 - "Guia completo por situação de viagem. Áudios com pronúncia incluídos."
 - "Não dependa de tradutor na sua próxima viagem. Comece hoje, acesso imediato."
 - "Método prático testado por viajantes. Garantia incondicional de 7 dias."

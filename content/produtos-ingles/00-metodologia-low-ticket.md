@@ -1,6 +1,6 @@
 # Metodologia Low Ticket — Inglês (Hotmart Style)
 
-> Documento de referência da Factory para a vertical **Inglês**. Usar como input padrão do `FactoryEngine` (campo `templateId: 'ingles-low-ticket'`) para os 3 produtos definidos em `01`, `02` e `03`.
+> Documento de referência da Factory para a vertical **Inglês**. O conteúdo aqui e nos arquivos `01`, `02` e `03` deve ser usado para popular o campo `content` (JSONB) de uma linha na tabela `templates` (schema em `packages/database/schema.sql`); o `FactoryEngine` referencia esse template pelo **UUID** gerado no `INSERT`, passado em `input.templateId` — ver nota técnica no `README.md` desta pasta.
 
 ## 1. Princípio Central: Regra 60/40
 
@@ -19,11 +19,11 @@ Toda LP e sequência segue a mesma progressão, sem desvios:
 2. **Identificação** ("é você que...")
 3. **Agitação da dor** (custo de não resolver AGORA)
 4. **Vislumbre do novo estado** (a transformação, não a informação)
-5. **Prova/Autoridade** (depoimento, número, mecanismo único)
+5. **Prova/Autoridade** (depoimento, número, autoridade do criador)
 6. **Mecanismo Único** (por que isso funciona quando outras coisas falharam)
 7. **Oferta** (o que entrega + bônus + garantia)
 8. **Escassez/Urgência real** (vagas, preço, bônus por tempo)
-7. **CTA único** — um só botão, uma só ação possível na tela.
+9. **CTA único** — um só botão, uma só ação possível na tela.
 
 Regra: nunca dois CTAs concorrentes na mesma página. Nunca "pensar" como opção — sempre "comprar agora" vs. "sair".
 

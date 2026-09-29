@@ -4,13 +4,16 @@ node_modules/
 .pnp.js
 
 # Testing
-/coverage
+coverage/
 
-# Production
-/build
-/dist
-/.next
-/out
+# Production — no leading slash: this is a monorepo, these dirs appear
+# under every app/package (apps/dashboard/.next, apps/api/dist, etc.),
+# not just at the repo root.
+build/
+dist/
+.next/
+out/
+next-env.d.ts
 
 # Misc
 .DS_Store

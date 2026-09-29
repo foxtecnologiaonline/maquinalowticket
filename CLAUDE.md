@@ -311,12 +311,12 @@ inventar dados.
 - [x] Git repository initialization
 
 ### 🔄 FASE 2: Factory Core (NEXT)
-- [ ] Product Builder form component
-- [ ] Template Library CRUD UI
+- [x] Product Builder form component (`apps/dashboard/app/products/page.tsx`, formulário simples)
+- [ ] Template Library CRUD UI (hoje o dashboard só lista os 4 templates fixos do seed)
 - [ ] FactoryEngine optimization
 - [ ] Landing page template engine
-- [ ] Template selection interface
-- [ ] Basic form validation
+- [x] Template selection interface (dropdown com os templates seedados)
+- [x] Basic form validation (validação nativa HTML5 + erros da API exibidos)
 
 ### 📋 FASE 3: Automation (AFTER FASE 2)
 - [ ] Workflow builder (visual interface)
@@ -358,6 +358,29 @@ inventar dados.
 4. **Dashboard Product List Page**
    - File: `apps/dashboard/app/products/page.tsx`
    - Features: Table with products, filters by status, quick actions
+   - Status: lista simples pronta; faltam filtros por status e ações rápidas (editar/arquivar)
+
+## 🖥️ Dashboard (Next.js) — o que já existe
+
+`apps/dashboard` tem autenticação e as duas telas funcionais que consomem a API real:
+
+- `app/login/page.tsx` — login/cadastro (alterna entre os dois modos), guarda token em `localStorage`
+- `app/products/page.tsx` — formulário de criação (template fixo do seed + preço/título/descrição/categoria) e lista dos produtos do usuário
+- `app/marketing/page.tsx` — botão "Rodar ciclo agora", lista de relatórios e painel de recomendações pendentes com Aprovar/Rejeitar
+- `lib/api.ts` — cliente HTTP central; `lib/auth-context.tsx` — sessão via Context API + `localStorage` (sem Zustand/react-query para auth, só para cache de dados)
+- Rotas protegidas redirecionam para `/login` se não houver sessão (`useRequireAuth`)
+
+**Validado de ponta a ponta com Playwright real** (não é só leitura de código): cadastro →
+login → criação de produto com o template seedado → execução de ciclo do Marketing Agent,
+tudo pela UI, no navegador, contra API e Postgres reais.
+
+**Bugs pré-existentes corrigidos para o dashboard sequer compilar**: `next.config.js`,
+`postcss.config.js` e `tailwind.config.js` usavam `module.exports` (CommonJS) enquanto
+`package.json` declara `"type": "module"` — o Node tratava esses arquivos como ES Module e
+quebrava com `ReferenceError: module is not defined`. Convertidos para `export default`.
+Também corrigido `.gitignore`: os padrões `/dist`, `/.next`, `/build` (com barra inicial)
+só ignoravam esses diretórios na raiz do repo, não dentro de `apps/*` — corrigido para
+`dist/`, `.next/`, `build/` (sem âncora), já que é um monorepo.
 
 ## 📚 Code Quality Standards
 

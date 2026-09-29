@@ -80,6 +80,8 @@ Para cada produto, produzir no mínimo:
 
 - [ ] Disclaimers de saúde presentes (especialmente produto 3 - pré-diabetes)
 - [ ] Sem promessas de resultado garantido ("emagreça X kg garantido")
+- [ ] Anúncios não afirmam/implicam que o viewer tem a condição de saúde (política de "Personalized Attributes" do Meta) — usar afirmações gerais sobre o público-alvo, nunca "você está na menopausa/grávida/pré-diabético" em 2ª pessoa direta
 - [ ] Política de reembolso visível na LP
 - [ ] Pixel/conversion API instalados e testados (Meta + Google)
 - [ ] UTM parametrizada em todos os links (`utm_source`, `utm_campaign`, `utm_content`)
+- [ ] Conta de anúncio de saúde verificada quando exigido pela plataforma (produto 3 tem maior chance de exigir)

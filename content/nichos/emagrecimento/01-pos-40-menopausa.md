@@ -119,7 +119,7 @@ Módulos:
 - gordura abdominal hormonal
 
 **Campanha 3 — Concorrência/branded (se houver orçamento):**
-- [nomes de métodos concorrentes conhecidos no nicho] + "funciona"
+- Levantar manualmente os 3-5 métodos/infoprodutos concorrentes mais buscados no nicho (pesquisar no Google Trends/Keyword Planner por "[nome do método] funciona" e "[nome do método] depoimentos") e criar grupo de anúncio dedicado só depois de validado o volume de busca — não subir com termo genérico.
 
 **Estrutura de anúncio responsivo (RSA) — títulos:**
 - Emagreça Depois dos 40 Sem Dieta Radical
@@ -133,6 +133,9 @@ Módulos:
 - Garantia de 7 dias. Comece hoje mesmo o seu protocolo hormonal para emagrecer com saúde.
 
 **Negativas sugeridas:** grátis, emprego, curso gratuito online, concurso, cirurgia bariátrica (a menos que seja parte da estratégia), "homem"/masculino.
+
+**⚠️ Atenção — Compliance de Anúncios de Saúde (Meta Ads):**
+Menopausa/climatério é tratado como atributo pessoal de saúde pela política de "Personalized Attributes" do Meta. Evitar linguagem que afirme ou implique que a própria pessoa que vê o anúncio tem a condição (ex: "Você está na menopausa e...") — preferir afirmações gerais sobre o público ("mulheres na menopausa costumam..."). Ver checklist completo em `funil-trafego-pago.md`.
 
 ## 7. KPIs de referência para escalar
 

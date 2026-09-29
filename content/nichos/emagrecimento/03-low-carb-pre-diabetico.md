@@ -132,7 +132,7 @@ Módulos:
 **Negativas sugeridas:** grátis, remédio, insulina comprar, farmácia, emprego, "cura garantida" (nunca usar essa promessa — risco de compliance/ASO em plataformas de anúncio de saúde).
 
 **⚠️ Atenção — Compliance de Anúncios de Saúde:**
-Google e Meta têm políticas rígidas para conteúdo de saúde (diabetes). Evitar: promessas de cura, antes/depois de peso sem contexto, alegações médicas absolutas. Sempre incluir disclaimer "não substitui acompanhamento médico" nos criativos e na LP.
+Google e Meta têm políticas rígidas para conteúdo de saúde (diabetes). Pré-diabetes/glicemia é tratado como atributo pessoal de saúde pela política de "Personalized Attributes" do Meta — evitar afirmar/implicar que o viewer tem a condição ("Você está pré-diabético") e preferir afirmações gerais ("pessoas com glicemia alterada costumam..."). Evitar também: promessas de cura, antes/depois de peso sem contexto, alegações médicas absolutas. Sempre incluir disclaimer "não substitui acompanhamento médico" nos criativos e na LP. Ver checklist completo em `funil-trafego-pago.md`.
 
 ## 7. KPIs de referência
 

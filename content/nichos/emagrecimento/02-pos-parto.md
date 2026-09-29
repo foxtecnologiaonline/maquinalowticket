@@ -128,9 +128,11 @@ Módulos:
 
 **Negativas sugeridas:** gratuito, emprego, fórmula infantil, adoção, "homem", cirurgia plástica.
 
+**⚠️ Atenção — Compliance de Anúncios de Saúde (Meta Ads):**
+Pós-parto/amamentação é tratado como atributo pessoal de saúde pela política de "Personalized Attributes" do Meta. Evitar linguagem que afirme diretamente que a pessoa que vê o anúncio está grávida, amamentando ou pós-parto — preferir afirmações gerais ("mães no pós-parto costumam..."). Nunca prometer "voltar ao peso pré-gravidez garantido"; usar linguagem de possibilidade. Ver checklist completo em `funil-trafego-pago.md`.
+
 ## 7. KPIs de referência
 
 - CPL alvo: R$ 1,50 a R$ 4
 - Conversão LP → checkout: 4-9% (dor emocional alta, tende a converter bem)
 - ROAS mínimo para escalar: 2x
-- Atenção: compliance — nunca prometer "voltar ao peso pré-gravidez garantido"; usar linguagem de possibilidade e realista.

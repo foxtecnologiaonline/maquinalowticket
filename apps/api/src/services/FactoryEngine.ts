@@ -140,6 +140,15 @@ export class FactoryEngine {
   ): Promise<string> {
     const landingPageId = uuidv4();
 
+    // Templates may ship their own copy (see packages/database/seeds/*.sql);
+    // fall back to generic copy derived from the product input otherwise.
+    const heroSection = template.content?.hero_section || {
+      headline: input.title,
+      subheadline: input.description,
+      ctaText: 'Get Access Now',
+    };
+    const benefitsSection = template.content?.benefits_section || [];
+
     await client.query(
       `INSERT INTO landing_pages (id, product_id, slug, title, hero_section, benefits_section, published)
        VALUES ($1, $2, $3, $4, $5, $6, $7)`,
@@ -148,12 +157,8 @@ export class FactoryEngine {
         productId,
         slug,
         input.title,
-        JSON.stringify({
-          headline: input.title,
-          subheadline: input.description,
-          ctaText: 'Get Access Now',
-        }),
-        JSON.stringify(template.benefits || []),
+        JSON.stringify(heroSection),
+        JSON.stringify(benefitsSection),
         true,
       ]
     );
@@ -185,7 +190,9 @@ export class FactoryEngine {
           automationDef.name,
           automationDef.trigger_type,
           JSON.stringify(automationDef.trigger_config || {}),
-          JSON.stringify(automationDef.actions || []),
+          // `actions` is JSONB[] in Postgres: each element must be its own
+          // JSON string, not one JSON string for the whole array.
+          (automationDef.actions || []).map((action: any) => JSON.stringify(action)),
           true,
         ]
       );

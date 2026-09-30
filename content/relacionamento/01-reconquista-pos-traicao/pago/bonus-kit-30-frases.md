@@ -1,6 +1,6 @@
 # Bônus — Kit de 30 Frases Prontas para 30 Situações
 
-*Complementa as 12 frases do Módulo 2 (Aula 2.2) com mais situações específicas. Organizado por contexto.*
+Complementa as 12 frases do Módulo 2 com mais situações específicas. Organizado por contexto.
 
 ## Contato inicial pós-Contato Zero (5)
 1. "Nosso período de espaço terminou. Podemos marcar uma conversa essa semana?"

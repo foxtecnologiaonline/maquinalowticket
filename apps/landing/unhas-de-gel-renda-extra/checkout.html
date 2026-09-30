@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Finalizar Compra — Método Unhas de Ouro™</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="hero" style="padding:26px 0;">
+  <div class="wrap"><h1 style="font-size:22px;">Finalize seu acesso ao Método Unhas de Ouro™</h1></div>
+</header>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="offer-box">
+      <p><strong>Resumo do pedido</strong></p>
+      <ul>
+        <li>Curso completo Unhas de Ouro™ — R$ 97,00</li>
+      </ul>
+
+      <!-- ORDER BUMP: item avulso, distinto dos bônus grátis do curso principal -->
+      <div style="background:#fff7e8;border:2px dashed var(--gold);border-radius:10px;padding:16px;margin:16px 0;">
+        <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;">
+          <input type="checkbox" id="bump" onchange="updateTotal()" style="margin-top:4px;">
+          <span>
+            <strong>☑️ SIM, quero adicionar a Calculadora de Precificação Avançada por apenas R$ 27</strong><br>
+            <small>Descubra o preço ideal pra cobrar em cada tipo de unha, no seu bairro, considerando seus custos reais. Inclui tabela atualizada a cada 3 meses.</small>
+          </span>
+        </label>
+      </div>
+
+      <p class="price" id="total" style="font-size:26px;">Total: R$ 97,00</p>
+
+      <!--
+        INTEGRAÇÃO DE PAGAMENTO PENDENTE:
+        este botão deve ser conectado ao checkout real (Hotmart, Stripe, etc.)
+        Ver apps/api/src/routes/ e STRIPE_PUBLIC_KEY em CLAUDE.md > Environment Variables.
+      -->
+      <div class="cta-wrap">
+        <a href="upsell-1.html" class="btn-cta">FINALIZAR COMPRA COM SEGURANÇA</a>
+      </div>
+      <p style="text-align:center;font-size:12px;color:#999;">🔒 Pagamento processado por [PLATAFORMA DE PAGAMENTO] · Ambiente seguro</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  function updateTotal() {
+    var bump = document.getElementById('bump').checked;
+    var total = 97 + (bump ? 27 : 0);
+    document.getElementById('total').textContent = 'Total: R$ ' + total.toFixed(2).replace('.', ',');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Método CNV Casal — Chega de Brigar Pelos Mesmos Motivos</title>
+<meta name="description" content="14 dias para transformar discussões em conversas de verdade — mesmo que vocês já tenham tentado de tudo.">
+<style>
+  :root{
+    --bg:#0f1a1c; --bg2:#152426; --card:#1c2e30; --text:#eaf3f2; --muted:#a9c3c0;
+    --accent:#2f9e8f; --accent2:#4fc9b8; --gold:#d9a441; --ok:#4fc9b8; --border:#254042;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Georgia',serif;background:var(--bg);color:var(--text);line-height:1.6;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px;}
+  .hero{background:linear-gradient(180deg,var(--bg2),var(--bg));padding:56px 0 40px;text-align:center;border-bottom:1px solid var(--border);}
+  .kicker{color:var(--gold);text-transform:uppercase;letter-spacing:2px;font-size:13px;font-family:Arial,sans-serif;font-weight:700;margin-bottom:18px;}
+  h1{font-size:clamp(28px,5vw,42px);line-height:1.25;margin-bottom:18px;}
+  .sub{font-size:18px;color:var(--muted);max-width:600px;margin:0 auto 30px;}
+  .note{font-size:12px;color:var(--muted);opacity:.7;font-family:Arial,sans-serif;font-style:italic;}
+  .cta-btn{display:inline-block;background:var(--accent);color:#052321;font-family:Arial,sans-serif;font-weight:700;font-size:18px;padding:18px 36px;border-radius:8px;text-decoration:none;box-shadow:0 8px 24px rgba(47,158,143,.35);transition:transform .15s;}
+  .cta-btn:hover{transform:translateY(-2px);background:var(--accent2);}
+  section{padding:48px 0;border-bottom:1px solid var(--border);}
+  h2{font-size:26px;margin-bottom:20px;color:var(--gold);}
+  .agit p{margin-bottom:16px;font-size:18px;color:var(--muted);}
+  .agit p:last-child{color:var(--text);font-weight:700;}
+  .villain{background:var(--card);border-left:4px solid var(--accent);padding:24px;border-radius:6px;font-style:italic;color:var(--muted);}
+  .mechanism{background:linear-gradient(135deg,#20393b,#1c2e30);border:1px solid var(--gold);border-radius:10px;padding:28px;text-align:center;}
+  .mechanism strong{color:var(--gold);font-size:20px;display:block;margin-bottom:8px;}
+  .bullets{list-style:none;}
+  .bullets li{padding:14px 0 14px 36px;position:relative;border-bottom:1px solid var(--border);font-size:17px;}
+  .bullets li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:900;font-size:20px;}
+  .modules{display:grid;gap:14px;}
+  .module{background:var(--card);border-radius:8px;padding:18px 20px;border:1px solid var(--border);}
+  .module h3{color:var(--gold);font-size:16px;font-family:Arial,sans-serif;margin-bottom:6px;}
+  .module p{font-size:15px;color:var(--muted);font-family:Arial,sans-serif;}
+  .testi{background:var(--card);border-radius:8px;padding:20px;margin-bottom:14px;border:1px dashed var(--accent2);}
+  .testi p{font-size:16px;font-style:italic;margin-bottom:8px;}
+  .testi span{font-family:Arial,sans-serif;font-size:13px;color:var(--gold);}
+  .warn{background:#3a2f12;border:1px solid var(--gold);color:#f0d99a;font-family:Arial,sans-serif;font-size:13px;padding:12px 16px;border-radius:6px;margin-bottom:20px;}
+  .author{display:flex;gap:18px;align-items:center;background:var(--card);padding:22px;border-radius:8px;}
+  .author .ph{width:64px;height:64px;border-radius:50%;background:var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;color:var(--muted);font-size:11px;text-align:center;}
+  .offer{background:linear-gradient(135deg,var(--card),var(--bg2));border:2px solid var(--gold);border-radius:14px;padding:36px 28px;text-align:center;}
+  .price-old{font-family:Arial,sans-serif;color:var(--muted);text-decoration:line-through;font-size:18px;}
+  .price-new{font-family:Arial,sans-serif;font-size:48px;color:var(--gold);font-weight:900;margin:6px 0;}
+  .price-new span{font-size:20px;}
+  .bonus{font-family:Arial,sans-serif;font-size:14px;color:var(--ok);margin-bottom:20px;}
+  .guarantee{display:flex;gap:16px;align-items:center;background:var(--card);border-radius:8px;padding:20px;margin-top:24px;}
+  .guarantee .seal{font-size:40px;}
+  .faq-item{border-bottom:1px solid var(--border);padding:16px 0;}
+  .faq-item summary{cursor:pointer;font-weight:700;font-family:Arial,sans-serif;font-size:16px;color:var(--text);}
+  .faq-item p{margin-top:10px;color:var(--muted);font-family:Arial,sans-serif;font-size:15px;}
+  .final{text-align:center;padding:56px 0;}
+  .ps{max-width:560px;margin:24px auto 0;font-size:14px;color:var(--muted);font-style:italic;}
+  footer{text-align:center;padding:30px 0;font-family:Arial,sans-serif;font-size:12px;color:var(--muted);}
+  .disclaimer{max-width:600px;margin:0 auto;font-family:Arial,sans-serif;font-size:12px;color:var(--muted);opacity:.8;line-height:1.5;}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Método CNV Casal</div>
+    <h1>Vocês brigam sempre pelos mesmos motivos?<br>O problema não é o assunto — é como vocês conversam.</h1>
+    <p class="sub">14 dias para transformar discussões em conversas — mesmo que vocês já tenham tentado de tudo.</p>
+    <a href="#oferta" class="cta-btn">Quero transformar nossas conversas</a>
+    <p class="note" style="margin-top:14px;">Acesso imediato · Garantia incondicional de 7 dias</p>
+  </div>
+</header>
+
+<section class="agit">
+  <div class="wrap">
+    <h2>Isso soa familiar?</h2>
+    <p>Vocês já tiveram a mesma briga 20 vezes, com palavras quase idênticas.</p>
+    <p>Um fala, o outro já entra na defensiva antes de terminar a frase.</p>
+    <p>Às vezes parece mais fácil evitar o assunto do que discutir de novo.</p>
+    <p>O problema não é falta de amor — é falta de ferramenta.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Ninguém te ensinou isso</h2>
+    <div class="villain">
+      "Ninguém ensina comunicação em relacionamento. A gente aprende brigando com os pais, vendo série, ou copiando o pior exemplo que teve por perto."
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>O Método CNV Casal</h2>
+    <div class="mechanism">
+      <strong>Adaptação prática da Comunicação Não-Violenta</strong>
+      Para o dia a dia real de casais brasileiros — com scripts prontos, não teoria.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>O que você vai conseguir</h2>
+    <ul class="bullets">
+      <li>Parar de repetir a mesma briga sobre tarefas de casa, dinheiro ou família</li>
+      <li>Aprender a pedir o que precisa sem parecer cobrança</li>
+      <li>20 conversas reescritas, prontas para usar essa semana</li>
+      <li>Um ritual de 20 minutos por semana que evita 80% dos atritos</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>O que está incluso</h2>
+    <div class="modules">
+      <div class="module"><h3>Módulo 1 — Diagnóstico do Casal (dias 1-2)</h3><p>Mapeamento dos gatilhos de briga e do padrão de comunicação de cada um.</p></div>
+      <div class="module"><h3>Módulo 2 — A Estrutura CNV (dias 3-7)</h3><p>Observação → Sentimento → Necessidade → Pedido, com 20 conversas reescritas.</p></div>
+      <div class="module"><h3>Módulo 3 — Conversas Difíceis (dias 8-11)</h3><p>Scripts para dinheiro, tarefas de casa, família e intimidade.</p></div>
+      <div class="module"><h3>Módulo 4 — Manutenção (dias 12-14)</h3><p>Ritual semanal de check-in e como se desculpar de um jeito que o outro sente de verdade.</p></div>
+      <div class="module"><h3>Bônus</h3><p>50 Frases de Abertura · Planner de Ritual Semanal · Áudio guiado de 10 min para esfriar a cabeça.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Casais que já usaram o método</h2>
+    <div class="warn">⚠️ Depoimento de exemplo — substituir por relato real e autorizado antes de publicar/anunciar.</div>
+    <div class="testi"><p>"Depois de 8 anos juntos, foi a primeira vez que discutimos dinheiro sem gritar."</p><span>— Depoimento-modelo, aguardando substituição por caso real</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Quem preparou este material</h2>
+    <div class="author">
+      <div class="ph">FOTO<br>AUTOR</div>
+      <p style="font-family:Arial,sans-serif;color:var(--muted);font-size:15px;">[Nome do especialista/curador] adaptou os princípios da Comunicação Não-Violenta (Marshall Rosenberg) para a realidade de casais brasileiros, sem jargão terapêutico.</p>
+    </div>
+  </div>
+</section>
+
+<section id="oferta">
+  <div class="wrap">
+    <div class="offer">
+      <div class="price-old">De R$67</div>
+      <div class="price-new">R$37 <span>hoje</span></div>
+      <div class="bonus">+ Bônus 50 Frases de Abertura para Conversas Difíceis — grátis</div>
+      <a href="#checkout" class="cta-btn">Quero transformar nossas conversas</a>
+      <div class="guarantee">
+        <div class="seal">🛡️</div>
+        <p style="font-family:Arial,sans-serif;font-size:14px;color:var(--muted);text-align:left;">Garantia incondicional de 7 dias. Se não notarem diferença nas conversas, devolvemos 100% do valor — sem perguntas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Perguntas frequentes</h2>
+    <details class="faq-item"><summary>Meu parceiro(a) precisa fazer o curso junto?</summary><p>Não é obrigatório, mas o resultado é mais rápido quando os dois participam. O material também funciona sendo aplicado por só uma pessoa do casal.</p></details>
+    <details class="faq-item"><summary>Serve para namoro ou só casamento?</summary><p>Serve para qualquer relacionamento sério, independente do tempo juntos.</p></details>
+    <details class="faq-item"><summary>E se a gente já está em crise grave?</summary><p>O material é preventivo/educativo. Em crises graves (traição, violência, dependência), recomendamos terapia de casal profissional em paralelo.</p></details>
+    <details class="faq-item"><summary>Como recebo o acesso?</summary><p>Imediatamente após a confirmação do pagamento, por e-mail e na área de membros.</p></details>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>A próxima briga pode ser diferente — se vocês tiverem as ferramentas certas</h2>
+    <a href="#oferta" class="cta-btn">Quero começar agora</a>
+    <p class="ps">P.S. Vocês não precisam de mais amor. Precisam de um jeito melhor de conversar sobre o que já sentem. É isso que o Método CNV Casal entrega.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="disclaimer">
+    Este material é educativo e não substitui terapia de casal profissional. Compra protegida por garantia de 7 dias (direito de arrependimento, CDC).
+  </div>
+</footer>
+
+</body>
+</html>

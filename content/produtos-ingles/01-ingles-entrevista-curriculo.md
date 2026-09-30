@@ -1,5 +1,7 @@
 # 🥇 Produto 1 — Inglês para Entrevista de Emprego / Currículo
 
+> ✅ **Status**: LP funcional publicada em `apps/dashboard/app/lp/ingles-entrevista` (rota `/lp/ingles-entrevista`), com captura de lead real (`POST /api/leads`) e entrega imediata do PDF (`apps/dashboard/public/downloads/kit-20-frases-entrevista-ingles.pdf`). Conteúdo completo do grátis e dos 6 módulos do pago em `entregaveis/produto-01-entrevista/`. Falta apenas: áudios de pronúncia, vídeos de mock interview, diagramação final do PDF pago e o checkout (Stripe/Hotmart).
+
 ## 1. Avatar
 
 - **Quem**: profissional CLT/PJ, 24–40 anos, já qualificado tecnicamente, mas travado no inglês.

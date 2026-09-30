@@ -7,10 +7,11 @@ node_modules/
 /coverage
 
 # Production
-/build
-/dist
-/.next
-/out
+build/
+dist/
+.next/
+out/
+next-env.d.ts
 
 # Misc
 .DS_Store
@@ -40,3 +41,6 @@ Thumbs.db
 # Cache
 .eslintcache
 .turbo
+
+# Local dev data (lead capture, etc.)
+.data/

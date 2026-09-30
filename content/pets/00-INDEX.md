@@ -15,11 +15,30 @@ Email → Tráfego Pago). Cada playbook segue a metodologia padrão do segmento:
 
 ## Produtos priorizados
 
-| # | Produto | Preço | Order Bump | OTO | Por quê |
-|---|---------|-------|------------|-----|---------|
-| 🥇 | [Adestramento de Filhotes](./01-adestramento-de-filhotes.md) | R$47 | +R$27 | R$97 | Momento de maior ansiedade do tutor = maior disposição a pagar. Compra por impulso, decisão em <48h. |
-| 🥈 | [Nutrição Caseira para Cães](./02-nutricao-caseira-caes.md) | R$37 | +R$19 | R$67 | Tendência de humanização pet crescendo ~20%a.a. Baixo custo de produção de conteúdo, alta percepção de valor (saúde = medo de perder o pet). |
-| 🥉 | [Cuidados com Pets Idosos](./03-cuidados-pets-idosos.md) | R$47 | +R$27 | R$97 | Nicho fiel, pouco explorado, tutor com maior poder aquisitivo médio (pet já é "membro da família" há anos) e menos concorrência de anúncio. |
+| # | Produto | Preço | Order Bump | OTO | Playbook | Conteúdo dos módulos | LP pronta |
+|---|---------|-------|------------|-----|----------|----------------------|-----------|
+| 🥇 | Adestramento de Filhotes | R$47 | +R$27 | R$97 | [playbook](./01-adestramento-de-filhotes.md) | [conteúdo](./conteudo/01-adestramento-conteudo-modulos.md) | [LP (.html)](./lp/adestramento-de-filhotes.html) |
+| 🥈 | Nutrição Caseira para Cães | R$37 | +R$19 | R$67 | [playbook](./02-nutricao-caseira-caes.md) | [conteúdo](./conteudo/02-nutricao-conteudo-modulos.md) | [LP (.html)](./lp/nutricao-caseira-caes.html) |
+| 🥉 | Cuidados com Pets Idosos | R$47 | +R$27 | R$97 | [playbook](./03-cuidados-pets-idosos.md) | [conteúdo](./conteudo/03-idosos-conteudo-modulos.md) | [LP (.html)](./lp/cuidados-pets-idosos.html) |
+
+**Por quê estes 3**: momento de maior ansiedade do tutor (adestramento) = maior disposição a pagar
+e decisão de compra em <48h; tendência de humanização pet crescendo ~20%a.a. (nutrição), com baixo
+custo de produção de conteúdo; nicho fiel e pouco explorado com tutor de maior poder aquisitivo
+médio (pets idosos).
+
+## Status de execução (atualizado nesta sessão)
+
+- ✅ **LPs prontas**: 3 páginas HTML estáticas e autocontidas em `./lp/`, com toda a copy do
+  Sistema de Linha Reta (hero, agitação, mecanismo, prova social, oferta + order bump, garantia,
+  FAQ, CTA final). Abra o `.html` direto no navegador ou publique como está (Vercel/S3/Cloudflare
+  Pages) — não dependem do `LandingPageEngine` do FactoryEngine, que ainda não existe no código
+  (item pendente da FASE 3 no `CLAUDE.md`).
+- ✅ **Conteúdo dos módulos (free + pago)**: roteiro completo, pronto para gravar em vídeo ou
+  publicar como texto/PDF, em `./conteudo/`.
+- ⚠️ **Integração com a FactoryEngine/DB** (produto "publicado" dentro do próprio sistema, com
+  `product_id`, analytics e automações reais): ainda depende de construir a rota de Template CRUD
+  e o `LandingPageEngine` (FASE 2/3). O passo a passo de seed SQL abaixo mostra como fazer isso
+  manualmente enquanto essas rotas não existem.
 
 ## Como usar com a FactoryEngine
 

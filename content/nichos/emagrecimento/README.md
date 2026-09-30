@@ -33,9 +33,20 @@
 - `funil-trafego-pago.md` — arquitetura de campanhas (Meta Ads + Google Ads), orçamento e KPIs
 - `calendario-lancamento.md` — cronograma de 21 dias para os 3 produtos
 
+## 📦 Status de produção por produto
+
+| Produto | Isca (free) | Cardápio/módulo core (pago) | LP funcional |
+|---|---|---|---|
+| 🥇 Pós-40/menopausa | ✅ `produto-01-pos-40/free/` | ✅ `produto-01-pos-40/pago/cardapio-21-dias.md` | ✅ `apps/landing/produto-01-pos-40/index.html` |
+| 🥈 Pós-parto | ⏳ planejado em `02-pos-parto.md`, conteúdo final não escrito | ⏳ planejado, conteúdo final não escrito | ⏳ não criada |
+| 🥉 Low carb pré-diabético | ⏳ planejado em `03-low-carb-pre-diabetico.md`, conteúdo final não escrito | ⏳ planejado, conteúdo final não escrito | ⏳ não criada |
+
+Os arquivos `01-pos-40-menopausa.md`, `02-pos-parto.md` e `03-low-carb-pre-diabetico.md` continuam sendo o **plano de copy/oferta/ads** dos 3 produtos. O conteúdo final (e-book, cardápio, LP) do produto 1 já está pronto em `produto-01-pos-40/`; os produtos 2 e 3 seguem o mesmo padrão quando forem produzidos.
+
 ## ✅ Próximos passos de implementação (ligar ao FactoryEngine)
 
 1. Cadastrar os 3 produtos via `POST /api/products` com `type: 'course'`, usando os títulos/preços deste pacote.
-2. Usar os textos de LP deste pacote como `templateId` → seed inicial do `LandingPageEngine` (FASE 2).
+2. Publicar `apps/landing/produto-01-pos-40/index.html` (ou seed do `LandingPageEngine` na FASE 2) e trocar os depoimentos placeholder por reais antes de rodar tráfego.
 3. Alimentar `email_templates` com as sequências de e-mail de cada arquivo.
 4. Criar campanhas espelho no Meta Ads Manager e Google Ads usando os blocos de anúncio prontos.
+5. Repetir a produção de conteúdo final (isca + cardápio/módulo + LP) para os produtos 2 e 3.

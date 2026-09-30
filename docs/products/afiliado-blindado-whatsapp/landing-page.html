@@ -1,0 +1,346 @@
+<title>Afiliado Blindado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout concept: a single vertical "chat thread" the reader scrolls through,
+     with a reusable phone-mockup component carrying the proof and script snippets. */
+  :root{
+    --bg:#12172a;
+    --surface:#1a2140;
+    --surface-2:#212a4d;
+    --fg:#f1eee6;
+    --muted:#a6adcf;
+    --accent:#ff6f4d;
+    --line:#2b3162;
+    --frio:#6fa3d8;
+    --morno:#f2b84b;
+    --quente:#ff6f4d;
+    --font-display:'Fraunces',ui-serif,Georgia,serif;
+    --font-body:'IBM Plex Sans',ui-sans-serif,system-ui,sans-serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light){
+    :root:not([data-theme="dark"]){
+      --bg:#f4f1ea; --surface:#ffffff; --surface-2:#efeadf; --fg:#1a1f36; --muted:#5c6280; --line:#e3ddcd;
+      color-scheme: light;
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#f4f1ea; --surface:#ffffff; --surface-2:#efeadf; --fg:#1a1f36; --muted:#5c6280; --line:#e3ddcd;
+    color-scheme: light;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--fg);
+    font-family:var(--font-body); font-size:16px; line-height:1.6;
+    padding-inline:20px; overflow-x:hidden;
+  }
+  .wrap{ max-width:640px; margin:0 auto; }
+  h1,h2,h3{ font-family:var(--font-display); text-wrap:balance; margin:0; }
+  p{ margin:0; }
+  ::selection{ background:var(--accent); color:#12172a; }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky; top:env(safe-area-inset-top,0px);
+    z-index:20; display:flex; align-items:center; justify-content:space-between;
+    padding-block:14px; background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
+  }
+  .brand{ display:flex; align-items:center; gap:8px; font-weight:600; letter-spacing:.02em; }
+  .brand .dot{ width:9px; height:9px; border-radius:50%; background:var(--quente); box-shadow:0 0 0 3px color-mix(in srgb, var(--quente) 25%, transparent); }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    font-family:var(--font-body); font-weight:600; font-size:.95rem;
+    padding:12px 20px; border-radius:999px; border:1px solid transparent;
+    cursor:pointer; text-decoration:none; transition:transform .15s ease, filter .15s ease;
+  }
+  .btn:active{ transform:scale(.97); }
+  .btn-primary{ background:var(--accent); color:#1a1104; }
+  .btn-primary:hover{ filter:brightness(1.08); }
+  .btn-ghost{ border-color:var(--line); color:var(--fg); font-size:.85rem; padding:9px 16px; }
+
+  section{ padding-block:56px; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+  .eyebrow{
+    font-family:var(--font-mono); font-size:.72rem; text-transform:uppercase;
+    letter-spacing:.14em; color:var(--muted); margin-bottom:14px; display:block;
+  }
+
+  /* ---------- hero ---------- */
+  .hero h1{ font-size:2.15rem; font-weight:600; line-height:1.12; margin-bottom:18px; }
+  .hero .sub{ color:var(--muted); font-size:1.05rem; max-width:52ch; margin-bottom:28px; }
+  .hero .ctas{ display:flex; flex-wrap:wrap; gap:12px; margin-bottom:40px; }
+  .hero .price-chip{ font-family:var(--font-mono); font-size:.85rem; color:var(--muted); display:flex; align-items:center; gap:8px; }
+  .hero .price-chip b{ color:var(--fg); font-size:1.05rem; }
+
+  /* phone mockup */
+  .phone{
+    background:var(--surface); border:1px solid var(--line); border-radius:28px;
+    padding:16px; max-width:340px; margin-inline:auto; box-shadow:0 30px 60px -30px rgba(0,0,0,.5);
+  }
+  .phone-head{ display:flex; align-items:center; gap:10px; padding-bottom:12px; margin-bottom:12px; border-bottom:1px solid var(--line); }
+  .phone-avatar{ width:34px; height:34px; border-radius:50%; background:linear-gradient(135deg,var(--morno),var(--quente)); flex-shrink:0; }
+  .phone-name{ font-weight:600; font-size:.92rem; }
+  .phone-status{ font-size:.75rem; color:var(--muted); }
+  .bubble{
+    font-family:var(--font-mono); font-size:.82rem; line-height:1.5;
+    background:var(--surface-2); border-radius:14px 14px 14px 4px;
+    padding:10px 14px; max-width:88%; margin-bottom:10px;
+  }
+  .bubble.me{ margin-left:auto; border-radius:14px 14px 4px 14px; background:color-mix(in srgb, var(--accent) 18%, var(--surface-2)); }
+  .bubble .tag{ display:block; font-family:var(--font-body); font-size:.68rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); margin-bottom:4px; }
+
+  /* ---------- pain list ---------- */
+  .pain-list{ display:grid; gap:12px; margin-top:20px; }
+  .pain-item{
+    display:flex; gap:12px; align-items:flex-start; background:var(--surface);
+    border:1px solid var(--line); border-radius:14px; padding:16px;
+  }
+  .pain-item .mark{ font-family:var(--font-mono); color:var(--muted); font-size:.8rem; margin-top:2px; }
+  .pain-item p{ font-size:.98rem; }
+  .pain-close{ margin-top:24px; font-family:var(--font-display); font-size:1.15rem; }
+  .pain-close b{ color:var(--accent); }
+
+  /* ---------- temperature pipeline ---------- */
+  .pipeline{ display:grid; gap:14px; margin-top:24px; }
+  .stage{
+    border:1px solid var(--line); border-radius:16px; padding:18px 20px; background:var(--surface);
+    position:relative;
+  }
+  .stage .stage-head{ display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+  .stage .swatch{ width:12px; height:12px; border-radius:50%; }
+  .stage.frio .swatch{ background:var(--frio); }
+  .stage.morno .swatch{ background:var(--morno); }
+  .stage.quente .swatch{ background:var(--quente); }
+  .stage h3{ font-size:1.05rem; font-weight:600; }
+  .stage p{ color:var(--muted); font-size:.92rem; }
+  .stage .connector{
+    position:absolute; left:26px; bottom:-14px; width:1px; height:14px; background:var(--line);
+  }
+  .stage:last-child .connector{ display:none; }
+
+  /* ---------- benefits ---------- */
+  .benefits{ display:grid; gap:10px; margin-top:20px; }
+  .benefit{ display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-bottom:1px solid var(--line); }
+  .benefit:last-child{ border-bottom:none; }
+  .benefit .num{ font-family:var(--font-mono); color:var(--accent); font-size:.82rem; flex-shrink:0; width:1.6em; }
+
+  /* ---------- proof empty state ---------- */
+  .proof-empty{
+    border:1px dashed var(--line); border-radius:16px; padding:28px 22px; text-align:center;
+    color:var(--muted); margin-top:20px;
+  }
+  .proof-empty .icon{ font-family:var(--font-mono); font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:10px; }
+  .proof-empty p{ font-size:.95rem; }
+
+  /* ---------- offer ---------- */
+  .offer-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:28px 24px; margin-top:20px;
+  }
+  .offer-price{ display:flex; align-items:baseline; gap:12px; margin-bottom:4px; }
+  .offer-price .was{ font-family:var(--font-mono); color:var(--muted); text-decoration:line-through; font-size:1rem; }
+  .offer-price .now{ font-family:var(--font-display); font-size:2.4rem; font-weight:600; color:var(--fg); }
+  .offer-price .now sup{ font-size:1.1rem; }
+  .offer-note{ color:var(--muted); font-size:.88rem; margin-bottom:22px; }
+  .bonus-list{ display:grid; gap:10px; margin-bottom:24px; }
+  .bonus-item{ display:flex; gap:10px; font-size:.95rem; }
+  .bonus-item .gift{ flex-shrink:0; }
+  .guarantee{
+    display:flex; gap:12px; align-items:flex-start; background:var(--surface-2);
+    border-radius:14px; padding:16px; margin-top:24px;
+  }
+  .guarantee .badge{
+    font-family:var(--font-mono); font-size:.7rem; border:1px solid var(--line);
+    border-radius:999px; padding:4px 10px; flex-shrink:0; margin-top:2px;
+  }
+
+  /* ---------- faq ---------- */
+  details{ border-bottom:1px solid var(--line); padding-block:16px; }
+  details:first-of-type{ border-top:1px solid var(--line); }
+  summary{
+    cursor:pointer; font-weight:600; font-size:1rem; list-style:none;
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+  }
+  summary::-webkit-details-marker{ display:none; }
+  summary::after{ content:'+'; font-family:var(--font-mono); color:var(--muted); font-size:1.2rem; flex-shrink:0; transition:transform .2s ease; }
+  details[open] summary::after{ transform:rotate(45deg); }
+  details p{ color:var(--muted); margin-top:12px; font-size:.95rem; }
+
+  /* ---------- final cta ---------- */
+  .final-cta{ text-align:center; }
+  .final-cta h2{ font-size:1.7rem; margin-bottom:12px; }
+  .final-cta .sub{ color:var(--muted); margin-bottom:26px; }
+
+  footer{ padding-block:32px; color:var(--muted); font-size:.8rem; line-height:1.7; }
+  footer a{ color:var(--muted); }
+
+  @media (min-width:560px){
+    .hero h1{ font-size:2.6rem; }
+    .offer-price .now{ font-size:2.8rem; }
+  }
+</style>
+
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="brand"><span class="dot"></span>Afiliado Blindado</div>
+    <a class="btn btn-ghost" href="#oferta">Ver oferta</a>
+  </div>
+
+  <section class="hero">
+    <span class="eyebrow">Sistema de vendas · WhatsApp &amp; Instagram</span>
+    <h1>Faça sua primeira venda como afiliado em até 7 dias — sem aparecer e sem gastar 1 real em anúncio</h1>
+    <p class="sub">Um sistema de 3 passos pra transformar os contatos que você já tem no WhatsApp em vendas reais, sem link solto na bio e sem parecer chato.</p>
+    <div class="ctas">
+      <a class="btn btn-primary" href="#oferta">Quero começar agora</a>
+      <span class="price-chip">de <s>R$ 197</s> por <b>R$ 47</b></span>
+    </div>
+
+    <div class="phone">
+      <div class="phone-head">
+        <div class="phone-avatar"></div>
+        <div>
+          <div class="phone-name">Contato morno</div>
+          <div class="phone-status">visto por último agora</div>
+        </div>
+      </div>
+      <div class="bubble">
+        <span class="tag">Você</span>
+        Oi Marina! Vi que você comentou sobre organizar as finanças outro dia. Eu passei por isso também — já tentou algo parecido ou tá começando do zero?
+      </div>
+      <div class="bubble me">
+        <span class="tag">Marina</span>
+        Nunca consegui manter 😅 tá difícil
+      </div>
+      <div class="bubble">
+        <span class="tag">Você</span>
+        Entendo total. Encontrei uma forma que me ajudou bastante — posso te mostrar rapidinho como funciona?
+      </div>
+    </div>
+  </section>
+
+  <section class="dor">
+    <span class="eyebrow">O problema não é você</span>
+    <h2 style="font-size:1.5rem; font-weight:600; margin-bottom:8px;">Você já passou por isso?</h2>
+    <div class="pain-list">
+      <div class="pain-item"><span class="mark">01</span><p>Colocou o link de afiliado na bio e esperou alguém clicar sozinho.</p></div>
+      <div class="pain-item"><span class="mark">02</span><p>Ficou com vergonha de mandar mensagem pros seus contatos, parecendo spam.</p></div>
+      <div class="pain-item"><span class="mark">03</span><p>Achou que precisava de milhares de seguidores ou verba de anúncio pra começar.</p></div>
+      <div class="pain-item"><span class="mark">04</span><p>Comprou um curso genérico cheio de "mentalidade" e nenhum script pronto.</p></div>
+    </div>
+    <p class="pain-close">O que faltava não era esforço. Era um <b>sistema</b> pra saber o que dizer, pra quem, e em que momento.</p>
+  </section>
+
+  <section class="metodo">
+    <span class="eyebrow">O método</span>
+    <h2 style="font-size:1.5rem; font-weight:600;">Nem todo contato está pronto pra comprar agora</h2>
+    <p style="color:var(--muted); margin-top:8px;">O Afiliado Blindado trabalha os seus contatos em 3 estágios — cada um com sua própria abordagem.</p>
+    <div class="pipeline">
+      <div class="stage frio">
+        <div class="stage-head"><span class="swatch"></span><h3>Frio</h3></div>
+        <p>Te conhece, mas nunca viu você falar do produto. Aqui: conteúdo de valor, zero venda.</p>
+        <div class="connector"></div>
+      </div>
+      <div class="stage morno">
+        <div class="stage-head"><span class="swatch"></span><h3>Morno</h3></div>
+        <p>Já interagiu, já demonstrou curiosidade. Aqui: prova social e perguntas de qualificação.</p>
+        <div class="connector"></div>
+      </div>
+      <div class="stage quente">
+        <div class="stage-head"><span class="swatch"></span><h3>Quente</h3></div>
+        <p>Já perguntou, já quer saber mais. Aqui: oferta direta, com o script certo de fechamento.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="entrega">
+    <span class="eyebrow">O que você recebe</span>
+    <h2 style="font-size:1.5rem; font-weight:600;">Tudo pronto pra aplicar hoje</h2>
+    <div class="benefits">
+      <div class="benefit"><span class="num">01</span><p>Sistema completo dos 3 estágios de contato (frio → morno → quente)</p></div>
+      <div class="benefit"><span class="num">02</span><p>30+ scripts prontos de abordagem, qualificação e fechamento</p></div>
+      <div class="benefit"><span class="num">03</span><p>Sua primeira mensagem de venda pronta pra mandar hoje mesmo</p></div>
+      <div class="benefit"><span class="num">04</span><p>Sistema de automação leve — etiquetas, respostas rápidas, catálogo</p></div>
+      <div class="benefit"><span class="num">05</span><p>Calendário de 30 dias de conteúdo pronto pra Stories e Feed</p></div>
+      <div class="benefit"><span class="num">06</span><p>Banco de 60 artes editáveis + planilha de controle de comissões</p></div>
+    </div>
+  </section>
+
+  <section class="prova">
+    <span class="eyebrow">Resultados</span>
+    <h2 style="font-size:1.5rem; font-weight:600;">Quem já está aplicando</h2>
+    <div class="proof-empty">
+      <span class="icon">Em breve</span>
+      <p>Os primeiros relatos e prints de venda dos alunos entram aqui assim que chegam — sem depoimento inventado.</p>
+    </div>
+  </section>
+
+  <section class="oferta" id="oferta">
+    <span class="eyebrow">A oferta</span>
+    <h2 style="font-size:1.5rem; font-weight:600;">Afiliado Blindado — acesso completo</h2>
+    <div class="offer-card">
+      <div class="offer-price">
+        <span class="was">R$ 197</span>
+        <span class="now">R$ 47<sup>,00</sup></span>
+      </div>
+      <p class="offer-note">à vista no Pix, ou parcelado no cartão · acesso imediato</p>
+
+      <div class="bonus-list">
+        <div class="bonus-item"><span class="gift">🎁</span>Banco de 60 artes editáveis para Stories e Feed</div>
+        <div class="bonus-item"><span class="gift">🎁</span>Planilha de controle de comissões e follow-up</div>
+        <div class="bonus-item"><span class="gift">🎁</span>Grupo de suporte no WhatsApp por 30 dias</div>
+      </div>
+
+      <a class="btn btn-primary" style="width:100%" href="#">Quero garantir meu acesso</a>
+
+      <div class="guarantee">
+        <span class="badge">7 dias</span>
+        <p style="font-size:.9rem; color:var(--muted);">Garantia incondicional. Aplicou os scripts do Módulo 4 e não fez nenhuma venda? Devolvemos 100%, sem perguntas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <span class="eyebrow">Perguntas frequentes</span>
+    <h2 style="font-size:1.5rem; font-weight:600; margin-bottom:4px;">Antes de você decidir</h2>
+    <div>
+      <details>
+        <summary>Preciso aparecer em vídeo?</summary>
+        <p>Não. Todo o sistema funciona com texto — Status, Stories com print ou texto, e mensagens no WhatsApp.</p>
+      </details>
+      <details>
+        <summary>Preciso ter muitos seguidores?</summary>
+        <p>Não. O sistema foi desenhado pra quem tem poucos contatos, mas quer trabalhar eles direito — 30 a 50 contatos aquecidos já são suficientes pra começar.</p>
+      </details>
+      <details>
+        <summary>Vou receber suporte?</summary>
+        <p>Sim. O grupo de suporte no WhatsApp por 30 dias está incluso nos bônus.</p>
+      </details>
+      <details>
+        <summary>E se eu não souber qual produto promover?</summary>
+        <p>O Módulo 1 traz o checklist de escolha de produto e oferta antes de qualquer script.</p>
+      </details>
+      <details>
+        <summary>Quanto tempo por dia eu preciso dedicar?</summary>
+        <p>A rotina sugerida no Módulo 5 é de 30 minutos por dia.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <h2>Sua primeira venda pode sair nos próximos 7 dias</h2>
+    <p class="sub">R$ 47 · garantia de 7 dias · acesso imediato</p>
+    <a class="btn btn-primary" href="#oferta">Garantir meu acesso agora</a>
+  </section>
+
+  <footer>
+    Afiliado Blindado — conteúdo educacional sobre vendas como afiliado.<br>
+    Este produto não garante resultados financeiros — resultados dependem de aplicação individual.<br>
+    Suporte: contato disponível após a compra · Termos de uso · Política de privacidade
+  </footer>
+
+</div>

@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
-import { query, queryOne } from './database';
+import { query, queryOne } from './database.js';
+import { landingPageEngine } from './LandingPageEngine.js';
 import { ProductFactoryInput, ProductFactoryOutput } from '@maquinalowticket/shared-types';
 import { generateSlug } from '@maquinalowticket/utils';
 
@@ -47,7 +48,7 @@ export class FactoryEngine {
       );
 
       // 5. Setup landing page
-      const landingPageUrl = await this.setupLandingPage(productId, slug, input, template);
+      const landingPageUrl = await landingPageEngine.create(productId, slug, input, template);
 
       // 6. Setup automations
       await this.setupAutomations(productId, input.automations, template);
@@ -103,35 +104,6 @@ export class FactoryEngine {
     if (errors.length > 0) {
       throw new Error(`Validation errors: ${errors.join(', ')}`);
     }
-  }
-
-  private async setupLandingPage(
-    productId: string,
-    slug: string,
-    input: ProductFactoryInput,
-    template: any
-  ): Promise<string> {
-    const landingPageId = uuidv4();
-
-    await query(
-      `INSERT INTO landing_pages (id, product_id, slug, title, hero_section, benefits_section, published)
-       VALUES ($1, $2, $3, $4, $5, $6, $7)`,
-      [
-        landingPageId,
-        productId,
-        slug,
-        input.title,
-        JSON.stringify({
-          headline: input.title,
-          subheadline: input.description,
-          ctaText: 'Get Access Now',
-        }),
-        JSON.stringify(template.benefits || []),
-        true,
-      ]
-    );
-
-    return `${process.env.LANDING_PAGE_BASE_URL || 'http://localhost:3000'}/landing/${slug}`;
   }
 
   private async setupAutomations(

@@ -1,6 +1,7 @@
 import { Router, Response } from 'express';
-import { AuthRequest, authMiddleware } from '../middlewares/auth';
-import { factoryEngine } from '../services/FactoryEngine';
+import { AuthRequest, authMiddleware } from '../middlewares/auth.js';
+import { factoryEngine } from '../services/FactoryEngine.js';
+import { query } from '../services/database.js';
 import { ProductFactoryInput } from '@maquinalowticket/shared-types';
 
 const router = Router();
@@ -18,13 +19,13 @@ router.post('/', async (req: AuthRequest, res: Response) => {
 
     const result = await factoryEngine.createProduct(req.userId!, input);
 
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
       data: result,
     });
   } catch (error: any) {
     console.error('Error creating product:', error);
-    res.status(400).json({
+    return res.status(400).json({
       error: error.message || 'Failed to create product',
     });
   }
@@ -40,13 +41,13 @@ router.get('/', async (req: AuthRequest, res: Response) => {
 
     const products = await factoryEngine.listProducts(req.userId!, status);
 
-    res.json({
+    return res.json({
       success: true,
       data: products,
     });
   } catch (error: any) {
     console.error('Error listing products:', error);
-    res.status(500).json({
+    return res.status(500).json({
       error: error.message || 'Failed to list products',
     });
   }
@@ -58,20 +59,20 @@ router.get('/', async (req: AuthRequest, res: Response) => {
  */
 router.get('/:id', async (req: AuthRequest, res: Response) => {
   try {
-    const product = await factoryEngine.getProduct(req.params.id);
+    const product = await factoryEngine.getProduct(req.params.id!);
 
     // Check authorization
     if (product.user_id !== req.userId) {
       return res.status(403).json({ error: 'Unauthorized' });
     }
 
-    res.json({
+    return res.json({
       success: true,
       data: product,
     });
   } catch (error: any) {
     console.error('Error fetching product:', error);
-    res.status(error.message.includes('not found') ? 404 : 500).json({
+    return res.status(error.message.includes('not found') ? 404 : 500).json({
       error: error.message || 'Failed to fetch product',
     });
   }
@@ -83,7 +84,7 @@ router.get('/:id', async (req: AuthRequest, res: Response) => {
  */
 router.put('/:id', async (req: AuthRequest, res: Response) => {
   try {
-    const { id } = req.params;
+    const id = req.params.id!;
     const { title, description, price, status } = req.body;
 
     // Verify ownership
@@ -120,18 +121,18 @@ router.put('/:id', async (req: AuthRequest, res: Response) => {
 
     values.push(id);
 
-    await factoryEngine['query' as any](
+    await query(
       `UPDATE products SET ${updates.join(', ')} WHERE id = $${paramCount}`,
       values
     );
 
-    res.json({
+    return res.json({
       success: true,
       message: 'Product updated successfully',
     });
   } catch (error: any) {
     console.error('Error updating product:', error);
-    res.status(500).json({
+    return res.status(500).json({
       error: error.message || 'Failed to update product',
     });
   }
@@ -143,7 +144,7 @@ router.put('/:id', async (req: AuthRequest, res: Response) => {
  */
 router.delete('/:id', async (req: AuthRequest, res: Response) => {
   try {
-    const { id } = req.params;
+    const id = req.params.id!;
 
     // Verify ownership
     const product = await factoryEngine.getProduct(id);
@@ -152,18 +153,18 @@ router.delete('/:id', async (req: AuthRequest, res: Response) => {
     }
 
     // Archive instead of delete
-    await factoryEngine['query' as any](
+    await query(
       'UPDATE products SET status = $1 WHERE id = $2',
       ['archived', id]
     );
 
-    res.json({
+    return res.json({
       success: true,
       message: 'Product archived successfully',
     });
   } catch (error: any) {
     console.error('Error deleting product:', error);
-    res.status(500).json({
+    return res.status(500).json({
       error: error.message || 'Failed to delete product',
     });
   }

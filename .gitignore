@@ -7,10 +7,10 @@ node_modules/
 /coverage
 
 # Production
-/build
-/dist
-/.next
-/out
+build/
+dist/
+.next/
+out/
 
 # Misc
 .DS_Store

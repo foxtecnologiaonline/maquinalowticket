@@ -6,49 +6,32 @@
 
 ---
 
-## CONTEÚDO GRATUITO (60%) — isca + autoridade
+## CONTEÚDO GRATUITO (60%) — isca + autoridade ✅ COMPLETO
 
-### Lead magnet (PDF/checklist gratuito)
-**"O Diagnóstico dos 5 Sinais: Seu Relacionamento Tem Chance de Reconquista ou é Hora de Seguir em Frente?"**
-- Quiz de autodiagnóstico (gera lead + segmenta: reconquista vs. superação → dois funis)
-- Entrega por e-mail → inicia sequência
-
-### Conteúdo de blog/YouTube/Reels (autoridade)
-1. "Por que implorar e mandar mensagem toda hora afasta ainda mais quem te traiu" (quebra crença errada)
-2. "O erro nº1 que 9 em cada 10 pessoas cometem nos primeiros 7 dias após a traição"
-3. "Lei do Contato Zero: o que ela é de verdade (e por que 90% aplica errado)"
-4. "3 sinais de que ainda existe chance de reconstrução (segundo psicólogos)"
-5. Reels/Shorts: "Fala isso e ele(a) nunca mais vai te ver como antes" (gancho de curiosidade, sem entregar o script — CTA para o produto)
+**Arquivos prontos em `free/`:**
+- `lead-magnet-diagnostico.md` — quiz completo "O Diagnóstico dos 5 Sinais" (5 perguntas, pontuação, 3 resultados, e-mail de entrega)
+- `artigo-01-implorar-afasta.md` — artigo + roteiro de Reels
+- `artigo-02-erro-numero-1.md` — artigo + roteiro de Reels
+- `artigo-03-lei-contato-zero.md` — artigo + roteiro de Reels
+- `artigo-04-sinais-de-reconstrucao.md` — artigo + roteiro de Reels *(usa "segundo especialistas em relacionamento", nunca atribuir a psicólogo específico sem citação real)*
+- `reel-05-gancho-curiosidade.md` — reel de puro gancho, sem entregar o script (fica no pago)
 
 **Regra**: o conteúdo gratuito explica O QUÊ e POR QUÊ, nunca O COMO passo a passo completo.
 
 ---
 
-## CONTEÚDO PAGO (40%) — transformação completa
+## CONTEÚDO PAGO (40%) — transformação completa ✅ COMPLETO
 
-### Módulo 1 — Primeiros Socorros Emocionais (dias 1-3)
-- Protocolo anti-crise: o que fazer nas primeiras 72h
-- Script de Contato Zero (quantos dias, o que falar se ele(a) procurar antes)
-- Gestão da vergonha/raiva (técnica de regulação emocional em 3 passos)
+**Arquivos prontos em `pago/`:**
 
-### Módulo 2 — Reconstrução da Atração (dias 4-14)
-- "Efeito Espelho Quebrado": como parar de ser previsível
-- 12 frases prontas para cada tipo de mensagem que a pessoa manda
-- Cronograma de reaparecimento estratégico (redes sociais, rotina, aparência)
+- `modulo-1-primeiros-socorros.md` — protocolo anti-crise 72h, script completo de Contato Zero (com respostas prontas por situação), técnica de regulação emocional em 3 passos
+- `modulo-2-reconstrucao-atracao.md` — Efeito Espelho Quebrado, as 12 frases prontas por tipo de mensagem, cronograma de reaparecimento estratégico
+- `modulo-3-conversa-decisiva.md` — preparação, script completo da conversa (o que perguntar/evitar), como reconstruir confiança sem virar "polícia", checklist de prontidão
+- `modulo-4-superacao.md` — protocolo de superação em 4 semanas, exercício de reposicionamento de autoestima, sinais de quando buscar apoio profissional
+- `bonus-kit-30-frases.md` — 30 frases prontas organizadas por contexto (contato pós-Contato Zero, cobrança de resposta, sinal positivo/alerta, terceiros, encerramento)
+- `planilha-acompanhamento-21-dias.csv` — planilha dia a dia pronta para importar em Excel/Google Sheets
 
-### Módulo 3 — A Conversa Decisiva (dias 15-21)
-- Script completo da conversa sobre a traição (o que perguntar, o que não perguntar)
-- Como reconstruir confiança sem virar "polícia" da relação
-- Checklist: sinais de que a pessoa está pronta para reatar de verdade
-
-### Módulo 4 — Se a Reconquista Não For o Caminho
-- Protocolo de superação acelerada (para quem descobre no processo que não quer voltar)
-- Reposicionamento emocional e autoestima
-
-### Bônus
-- Kit de Frases Prontas (30 mensagens para 30 situações)
-- Planilha de acompanhamento dos 21 dias
-- Grupo de apoio fechado (Telegram) por 30 dias
+**Ainda não incluso** (fora do escopo de conteúdo escrito): grupo de apoio no Telegram — é operacional (precisa ser criado e moderado na entrega real do produto, não é "conteúdo").
 
 ---
 

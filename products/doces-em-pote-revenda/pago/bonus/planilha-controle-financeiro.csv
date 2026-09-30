@@ -1,0 +1,7 @@
+Data,Descricao,Tipo (Entrada/Saida),Categoria,Valor (R$),Saldo acumulado (R$)
+2026-10-01,Compra de ingredientes da semana,Saida,Ingredientes,80.00,-80.00
+2026-10-01,Compra de potes e rotulos,Saida,Embalagem,45.00,-125.00
+2026-10-03,Venda 12 potes Brigadeiro,Entrada,Venda,128.40,3.40
+2026-10-03,Venda 8 potes Brownie,Entrada,Venda,95.60,99.00
+2026-10-04,Venda encomenda condominio (20 potes),Entrada,Venda,214.00,313.00
+Instrucoes,"Adicione uma linha por movimentacao. O saldo acumulado deve ser a soma de tudo ate aquela linha (entradas somam, saidas subtraem). Revise semanalmente para saber se esta no lucro ou no prejuizo real, nao so 'no feeling'.",,,,

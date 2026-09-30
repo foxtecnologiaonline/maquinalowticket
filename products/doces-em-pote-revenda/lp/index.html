@@ -1,0 +1,266 @@
+<title>Fábrica de Potes Lucrativos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;800&family=Karla:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  /*
+    Layout concept: a kitchen counter at night — a dark cocoa backdrop
+    with warm paper "cards" (recipe cards, a jam-jar label) laid on top.
+    Rounded, hand-labelled display type stands in for a marker-written
+    label; body copy reads like recipe-card text. A jar silhouette
+    (pure CSS/SVG, no images) recurs as the section divider.
+  */
+  :root{
+    --paper:#f8ecd9; --paper-2:#efe0c4; --cocoa:#241209; --cocoa-2:#2f180d;
+    --ink:#2b1710; --ink-soft:#5b4636; --cream:#f6e9d8; --cream-soft:#d8c2a8;
+    --jam:#b3184a; --jam-deep:#7d0f34; --jam-bright:#ef5d86;
+    --caramel:#c98a34; --caramel-bright:#e3a75c;
+    --line:rgba(43,23,16,0.14); --line-dark:rgba(246,233,216,0.16);
+    --shadow:0 12px 28px -14px rgba(43,23,16,0.35);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){ color-scheme: dark; }
+  }
+  :root[data-theme="dark"]{ color-scheme: dark; }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--cocoa); color:var(--cream);
+    font-family:'Karla',system-ui,sans-serif; line-height:1.55;
+    padding-inline:16px; overflow-x:hidden;
+  }
+  h1,h2,h3,.display{ font-family:'Baloo 2',system-ui,sans-serif; text-wrap:balance; }
+  .wrap{ max-width:720px; margin-inline:auto; }
+  a{ color:inherit }
+  .eyebrow{
+    font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--caramel-bright); font-weight:700;
+  }
+
+  /* ---------- Jar divider (inline SVG, decorative) ---------- */
+  .jar-divider{ display:flex; justify-content:center; margin-block:8px; opacity:0.9 }
+  .jar-divider svg{ width:34px; height:34px }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding-block:56px 40px; text-align:center; }
+  .hero h1{
+    font-size:clamp(2rem, 5.2vw, 2.9rem); font-weight:800; margin:14px 0 16px;
+    color:var(--cream);
+  }
+  .hero h1 mark{ background:none; color:var(--jam-bright) }
+  .hero p.sub{ font-size:1.05rem; color:var(--cream-soft); max-width:56ch; margin-inline:auto; }
+  .cta{
+    display:inline-flex; align-items:center; gap:8px; margin-top:22px;
+    background:var(--jam); color:var(--cream); border:none; border-radius:999px;
+    padding:16px 30px; font-family:'Baloo 2',system-ui,sans-serif; font-weight:600;
+    font-size:1.02rem; text-decoration:none; box-shadow:var(--shadow);
+    transition:transform .15s ease, background .15s ease;
+  }
+  .cta:hover{ background:var(--jam-deep); transform:translateY(-1px) }
+  .cta:active{ transform:translateY(0) }
+  .trust{ margin-top:14px; font-size:0.82rem; color:var(--cream-soft); }
+
+  /* ---------- Cards (paper) ---------- */
+  .card{
+    background:var(--paper); color:var(--ink); border-radius:20px;
+    padding:28px clamp(18px,5vw,34px); box-shadow:var(--shadow);
+    margin-block:14px;
+  }
+  .card h2{ font-size:1.5rem; color:var(--jam-deep); margin:0 0 14px; font-weight:700 }
+  .card p{ margin:0 0 12px }
+  .card .ink-soft{ color:var(--ink-soft) }
+
+  .pain-list{ list-style:none; padding:0; margin:14px 0; display:grid; gap:10px }
+  .pain-list li{
+    background:var(--paper-2); border-radius:12px; padding:12px 16px;
+    font-style:italic; color:var(--ink-soft); border:1px solid var(--line);
+  }
+
+  /* ---------- Testimonials ---------- */
+  .stars{ color:var(--caramel); letter-spacing:2px; font-size:1rem }
+  .quote{ font-size:1.02rem; margin:8px 0 6px }
+  .quote-author{ font-size:0.85rem; color:var(--ink-soft); font-weight:700 }
+  .testimonial + .testimonial{ margin-top:18px; padding-top:18px; border-top:1px solid var(--line) }
+  .note{ font-size:0.85rem; color:var(--ink-soft); margin-top:16px; border-top:1px dashed var(--line); padding-top:12px }
+
+  /* ---------- Bullets ---------- */
+  .bullets{ list-style:none; padding:0; margin:0; display:grid; gap:12px }
+  .bullets li{ display:flex; gap:12px; align-items:flex-start }
+  .bullets li .check{
+    flex:none; width:26px; height:26px; border-radius:50%; background:var(--jam);
+    color:var(--cream); display:flex; align-items:center; justify-content:center;
+    font-size:0.85rem; font-weight:700; margin-top:2px;
+  }
+
+  /* ---------- Offer ---------- */
+  .offer-card{
+    background:linear-gradient(160deg,var(--paper),var(--paper-2)); text-align:center;
+    border:2px solid var(--caramel);
+  }
+  .price-old{ font-size:1rem; color:var(--ink-soft); text-decoration:line-through }
+  .price-main{ font-family:'Baloo 2',system-ui,sans-serif; font-size:clamp(2.1rem,6vw,2.8rem); color:var(--jam-deep); font-weight:800; margin:6px 0 2px }
+  .price-sub{ font-size:0.95rem; color:var(--ink-soft) }
+  .scarcity{
+    margin-top:16px; display:inline-block; background:var(--cocoa); color:var(--caramel-bright);
+    font-size:0.82rem; padding:8px 16px; border-radius:999px; font-weight:700;
+  }
+  .addons{ display:grid; gap:10px; margin-top:20px; text-align:left }
+  .addon{
+    background:var(--cream); border:1px solid var(--line); border-radius:12px;
+    padding:12px 16px; font-size:0.92rem;
+  }
+  .addon b{ color:var(--jam-deep) }
+
+  /* ---------- Guarantee ---------- */
+  .guarantee{ text-align:center; border:2px dashed var(--caramel) }
+  .badge-seal{
+    width:64px; height:64px; border-radius:50%; background:var(--caramel);
+    color:var(--cocoa); display:flex; align-items:center; justify-content:center;
+    font-family:'Baloo 2',system-ui,sans-serif; font-weight:800; font-size:1.3rem;
+    margin:0 auto 12px;
+  }
+
+  /* ---------- FAQ ---------- */
+  details{
+    border-bottom:1px solid var(--line); padding-block:14px;
+  }
+  details:first-of-type{ border-top:1px solid var(--line) }
+  summary{
+    cursor:pointer; font-weight:700; list-style:none; display:flex;
+    justify-content:space-between; gap:12px; align-items:center;
+  }
+  summary::-webkit-details-marker{ display:none }
+  summary .plus{
+    flex:none; width:22px; height:22px; border-radius:50%; border:1.5px solid var(--jam-deep);
+    display:flex; align-items:center; justify-content:center; font-size:0.9rem; color:var(--jam-deep);
+    transition:transform .15s ease;
+  }
+  details[open] summary .plus{ transform:rotate(45deg) }
+  details p{ margin:10px 0 0; color:var(--ink-soft) }
+
+  /* ---------- Final CTA ---------- */
+  .final{ text-align:center; padding-block:44px 60px }
+  .final h2{ color:var(--cream); font-size:1.5rem; margin-bottom:10px }
+  .final p{ color:var(--cream-soft); max-width:52ch; margin-inline:auto 12px }
+
+  footer{ text-align:center; font-size:0.78rem; color:var(--cream-soft); padding-block:24px 40px; opacity:0.7 }
+
+  @media (min-width:600px){
+    .testimonials-grid{ display:grid; grid-template-columns:1fr 1fr; gap:0 24px }
+    .testimonial + .testimonial{ border-top:none; margin-top:0; padding-top:0 }
+    .testimonial{ border-left:1px solid var(--line); padding-left:24px }
+    .testimonial:first-child{ border-left:none; padding-left:0 }
+  }
+</style>
+
+<div class="wrap">
+
+  <section class="hero">
+    <p class="eyebrow">Curso online · Fábrica de Potes Lucrativos</p>
+    <h1>Transforme R$ 50 em ingredientes em até <mark>R$ 800 por semana</mark> vendendo doces em pote</h1>
+    <p class="sub">O passo a passo que centenas de mulheres estão usando para gerar renda extra em casa — mesmo sem nunca ter vendido nada antes.</p>
+    <a class="cta" href="#oferta">Quero começar a vender hoje →</a>
+    <p class="trust">🔒 Compra 100% segura · Acesso imediato · Garantia de 7 dias</p>
+  </section>
+
+  <div class="jar-divider" aria-hidden="true">
+    <svg viewBox="0 0 48 48" fill="none"><path d="M17 6h14v5.5c3.5 1 6 4.3 6 8.2v18.8A5.5 5.5 0 0 1 31.5 44h-15A5.5 5.5 0 0 1 11 38.5V19.7c0-3.9 2.5-7.2 6-8.2V6z" stroke="var(--caramel-bright)" stroke-width="2"/><path d="M13 24h22" stroke="var(--caramel-bright)" stroke-width="1.5" stroke-dasharray="2 3"/></svg>
+  </div>
+
+  <section class="card">
+    <h2>Você reconhece esses pensamentos?</h2>
+    <ul class="pain-list">
+      <li>"Quanto eu cobro sem parecer caro ou dar prejuízo?"</li>
+      <li>"E se ninguém quiser comprar de mim?"</li>
+      <li>"Eu não sei nada de confeitaria profissional, será que dá certo?"</li>
+    </ul>
+    <p>Calma. Você não precisa ser confeiteira profissional — precisa de um <b>método simples e testado</b>.</p>
+  </section>
+
+  <section class="card">
+    <h2>O segredo não é fazer doces bonitos</h2>
+    <p>É <b>vender o pote certo, para a pessoa certa, pelo preço certo.</b> É exatamente isso que o método Fábrica de Potes Lucrativos te ensina, do zero, em menos de 7 dias.</p>
+  </section>
+
+  <section class="card">
+    <h2>Quem já começou</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Comecei vendendo pro meu prédio e em 3 semanas já tinha lista de espera. Nunca pensei que doce em pote desse tanto retorno!"</p>
+        <p class="quote-author">— Simone R.</p>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"A planilha de preço sozinha já valeu o curso. Eu tava vendendo no prejuízo sem saber."</p>
+        <p class="quote-author">— Camila T.</p>
+      </div>
+    </div>
+    <p class="note">Espaço reservado para depoimentos em vídeo/print assim que as primeiras vendas ocorrerem.</p>
+  </section>
+
+  <section class="card">
+    <h2>O que você recebe</h2>
+    <ul class="bullets">
+      <li><span class="check">✓</span><span>+24 receitas de doces em pote testadas e aprovadas, incluindo sazonais de alto giro</span></li>
+      <li><span class="check">✓</span><span>Planilha automática de precificação — nunca mais venda no prejuízo</span></li>
+      <li><span class="check">✓</span><span>10 templates de rótulo prontos para editar no Canva</span></li>
+      <li><span class="check">✓</span><span>Scripts prontos de vendas para WhatsApp e Instagram</span></li>
+      <li><span class="check">✓</span><span>Método de produção em lote para vender a semana toda trabalhando 1 dia</span></li>
+      <li><span class="check">✓</span><span>Grupo VIP de suporte por 30 dias</span></li>
+      <li><span class="check">✓</span><span><b>Bônus:</b> guia de fornecedores de embalagem barata</span></li>
+    </ul>
+  </section>
+
+  <section class="card offer-card" id="oferta">
+    <h2>Garanta seu acesso</h2>
+    <p class="price-old">De R$ 197,00</p>
+    <p class="price-main">12x de R$ 4,87</p>
+    <p class="price-sub">ou R$ 47,00 à vista</p>
+    <span class="scarcity">⏳ Vagas do Grupo VIP limitadas a 200 pessoas</span>
+    <div class="addons">
+      <div class="addon"><b>Order bump:</b> Pack de +15 Receitas Fitness/Low Carb por apenas R$ 27</div>
+      <div class="addon"><b>Upsell:</b> Monte sua Equipe e Escale para R$ 5.000/mês por R$ 97</div>
+    </div>
+    <a class="cta" style="margin-top:22px" href="#oferta">Quero garantir meu acesso agora</a>
+  </section>
+
+  <section class="card guarantee">
+    <div class="badge-seal">7d</div>
+    <h2>Garantia incondicional de 7 dias</h2>
+    <p class="ink-soft">Se você aplicar o método e não gostar por qualquer motivo, devolvemos 100% do seu dinheiro. O risco é todo nosso.</p>
+  </section>
+
+  <section class="card">
+    <h2>Perguntas frequentes</h2>
+    <details open>
+      <summary>Não sei cozinhar bem, ainda assim funciona? <span class="plus">+</span></summary>
+      <p>Sim — as receitas são passo a passo, testadas para quem nunca vendeu antes.</p>
+    </details>
+    <details>
+      <summary>Não tenho tempo, sou muito ocupada. <span class="plus">+</span></summary>
+      <p>O método de produção em lote resolve isso: 1 dia de produção vira estoque para a semana inteira.</p>
+    </details>
+    <details>
+      <summary>E se eu não conseguir vender? <span class="plus">+</span></summary>
+      <p>Você recebe os scripts prontos de venda e ainda tem garantia de 7 dias.</p>
+    </details>
+    <details>
+      <summary>Preciso de CNPJ ou vigilância sanitária para vender? <span class="plus">+</span></summary>
+      <p>O curso ensina a começar como produção caseira dentro do que a lei permite, e traz um guia de como formalizar quando o negócio crescer. Você não precisa esperar estar 100% regularizada para dar o primeiro passo.</p>
+    </details>
+    <details>
+      <summary>Recebo o acesso na hora? <span class="plus">+</span></summary>
+      <p>Sim, acesso liberado imediatamente após a confirmação do pagamento.</p>
+    </details>
+  </section>
+
+  <section class="final">
+    <h2>Você tem duas escolhas agora</h2>
+    <p>Continuar adiando essa renda extra, ou dar o primeiro passo hoje e começar a vender seus doces em pote essa semana.</p>
+    <a class="cta" href="#oferta">Quero garantir meu acesso agora</a>
+  </section>
+
+  <footer>Fábrica de Potes Lucrativos — Máquina Low Ticket · Página demonstrativa</footer>
+</div>

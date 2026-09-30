@@ -1,0 +1,7 @@
+Receita,Rendimento (potes),Custo ingredientes total (R$),Custo ingrediente por pote (R$),Custo embalagem por pote (R$),Custo gas/energia por leva (R$),Custo total por pote (R$),Margem desejada (%),Preco de venda sugerido (R$)
+Brigadeiro Gourmet,10,30.00,3.00,1.20,0.80,4.28,60,10.70
+Brownie Cremoso,10,35.00,3.50,1.20,0.80,4.78,60,11.95
+Pavê 2 camadas,10,28.00,2.80,1.30,0.80,4.18,60,10.45
+Cheesecake sem forno,10,32.00,3.20,1.20,0.80,4.48,60,11.20
+,,,,,,,,
+Instrucoes,"Preencha as colunas em branco (verde) com os custos reais da sua receita. As colunas de custo total e preco de venda sao calculadas assim: Custo total = custo ingrediente + embalagem + (gas/energia dividido pelo numero de potes). Preco de venda = Custo total / (1 - margem desejada, ex: 60% = 0.60)."

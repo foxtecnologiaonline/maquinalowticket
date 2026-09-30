@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Afiliado Blindado — Módulos Gratuitos</title>
+<link href="fonts/google-fonts.local.css" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 22mm 18mm; }
+  :root{
+    --bg:#f7f4ec; --surface:#ffffff; --ink:#1a1f36; --muted:#5c6280;
+    --accent:#e0562f; --line:#e3ddcd;
+    --frio:#3f7cb0; --morno:#b8780f; --quente:#c9451f;
+    --font-display:'Fraunces',ui-serif,Georgia,serif;
+    --font-body:'IBM Plex Sans',ui-sans-serif,system-ui,sans-serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--font-body); font-size:11pt; line-height:1.55;
+  }
+  h1,h2,h3{ font-family:var(--font-display); font-weight:600; text-wrap:balance; margin:0; }
+  p{ margin:0 0 10pt; }
+
+  /* ---------- cover ---------- */
+  .cover{
+    height:246mm; display:flex; flex-direction:column; justify-content:space-between;
+    page-break-after:always;
+  }
+  .cover .eyebrow{
+    font-family:var(--font-mono); font-size:9pt; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--muted);
+  }
+  .cover .badge{
+    display:inline-block; font-family:var(--font-mono); font-size:8.5pt; letter-spacing:.08em;
+    text-transform:uppercase; color:#fff; background:var(--accent); padding:5pt 11pt; border-radius:999pt;
+    margin-bottom:16pt;
+  }
+  .cover h1{ font-size:30pt; line-height:1.15; margin-bottom:14pt; max-width:15.5cm; }
+  .cover .sub{ font-size:12pt; color:var(--muted); max-width:13.5cm; }
+  .cover .toc{ border-top:1px solid var(--line); padding-top:16pt; }
+  .cover .toc-title{ font-family:var(--font-mono); font-size:9pt; text-transform:uppercase; letter-spacing:.1em; color:var(--muted); margin-bottom:10pt; }
+  .cover .toc-item{ display:flex; justify-content:space-between; padding:6pt 0; border-bottom:1px dotted var(--line); font-size:10.5pt; }
+  .cover .toc-item span:last-child{ color:var(--muted); font-family:var(--font-mono); font-size:9pt; }
+  .cover footer{ font-size:8.5pt; color:var(--muted); }
+
+  /* ---------- module pages ---------- */
+  .module{ page-break-before:always; }
+  .module:first-of-type{ page-break-before:auto; }
+  .module-head{ border-bottom:2px solid var(--ink); padding-bottom:10pt; margin-bottom:18pt; }
+  .module-num{ font-family:var(--font-mono); font-size:9pt; color:var(--accent); letter-spacing:.1em; text-transform:uppercase; }
+  .module-head h2{ font-size:19pt; margin-top:4pt; }
+  .goal{
+    background:var(--surface); border-left:3px solid var(--accent); border-radius:2pt;
+    padding:9pt 12pt; margin-bottom:16pt; font-size:10pt;
+  }
+  .goal b{ font-family:var(--font-mono); text-transform:uppercase; font-size:8.5pt; letter-spacing:.06em; color:var(--muted); display:block; margin-bottom:3pt; }
+
+  h3.lesson{ font-size:12.5pt; margin-top:18pt; margin-bottom:8pt; }
+  h3.lesson .lesson-tag{ font-family:var(--font-mono); font-size:9pt; color:var(--accent); margin-right:6pt; }
+
+  .proof{
+    background:var(--surface); border:1px solid var(--line); border-radius:6pt;
+    padding:10pt 12pt; font-size:10pt; margin:10pt 0;
+  }
+  .proof b{ font-family:var(--font-mono); font-size:8.5pt; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); display:block; margin-bottom:3pt; }
+
+  table.stages{ width:100%; border-collapse:collapse; margin:12pt 0; font-size:10pt; }
+  table.stages th{
+    font-family:var(--font-mono); font-size:8.5pt; text-transform:uppercase; letter-spacing:.06em;
+    text-align:left; color:var(--muted); padding:6pt 8pt; border-bottom:1px solid var(--ink);
+  }
+  table.stages td{ padding:8pt; border-bottom:1px solid var(--line); vertical-align:top; }
+  table.stages tr:last-child td{ border-bottom:1px solid var(--ink); }
+  .stage-frio{ color:var(--frio); font-weight:600; }
+  .stage-morno{ color:var(--morno); font-weight:600; }
+  .stage-quente{ color:var(--quente); font-weight:600; }
+
+  .rule{
+    background:#fbeee7; border:1px solid #f0c9b4; border-radius:6pt; padding:10pt 12pt; font-size:10pt; margin:12pt 0;
+  }
+  .rule b{ color:var(--accent); }
+
+  ol.numbered, ul.plain{ margin:0 0 10pt; padding-left:18pt; font-size:10.5pt; }
+  ol.numbered li, ul.plain li{ margin-bottom:6pt; }
+
+  .checklist{ list-style:none; margin:10pt 0; padding:0; font-size:10.5pt; }
+  .checklist li{ display:flex; gap:8pt; margin-bottom:7pt; }
+  .checklist .box{ flex-shrink:0; width:11pt; height:11pt; border:1.3pt solid var(--ink); border-radius:2pt; margin-top:2pt; }
+
+  .script-card{
+    background:#1a1f36; color:#f1eee6; border-radius:8pt; padding:14pt 16pt; margin:12pt 0;
+    font-family:var(--font-mono); font-size:9.5pt; line-height:1.6; white-space:pre-wrap;
+  }
+  .script-card .label{
+    display:block; font-family:var(--font-body); font-size:8pt; text-transform:uppercase;
+    letter-spacing:.08em; color:#a6adcf; margin-bottom:6pt;
+  }
+  .why{ font-size:10pt; color:var(--muted); margin-top:8pt; }
+
+  .gap-box{
+    background:var(--ink); color:#f1eee6; border-radius:10pt; padding:18pt 18pt; margin-top:22pt;
+  }
+  .gap-box .eyebrow{ font-family:var(--font-mono); font-size:9pt; text-transform:uppercase; letter-spacing:.1em; color:#ff9c7d; margin-bottom:8pt; display:block; }
+  .gap-box h3{ font-size:15pt; color:#fff; margin-bottom:8pt; }
+  .gap-box p{ color:#cfd3ec; font-size:10.5pt; }
+  .gap-box ul{ margin:10pt 0 14pt; padding-left:16pt; font-size:10.5pt; color:#f1eee6; }
+  .gap-box ul li{ margin-bottom:5pt; }
+  .gap-box .cta{
+    display:inline-block; background:var(--accent); color:#fff; font-weight:600; font-size:10.5pt;
+    padding:9pt 16pt; border-radius:999pt; text-decoration:none;
+  }
+
+  .pagefoot{ margin-top:28pt; font-size:8pt; color:var(--muted); text-align:center; }
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div>
+    <div class="eyebrow">Afiliado Blindado</div>
+    <span class="badge">Material gratuito · Módulos 1–3</span>
+    <h1>Venda pelo WhatsApp e Instagram sem gastar 1 real em anúncio</h1>
+    <p class="sub">Os 3 primeiros módulos do sistema de vendas para afiliados — fundamentos, vitrine sem aparecer e seus primeiros scripts reais.</p>
+  </div>
+  <div class="toc">
+    <div class="toc-title">Neste material</div>
+    <div class="toc-item"><span>Módulo 1 — Por que você não precisa de anúncio pra vender</span><span>p. 2</span></div>
+    <div class="toc-item"><span>Módulo 2 — Sua vitrine sem aparecer</span><span>p. 3</span></div>
+    <div class="toc-item"><span>Módulo 3 — Os primeiros scripts</span><span>p. 4</span></div>
+  </div>
+  <footer>Afiliado Blindado — conteúdo educacional sobre vendas como afiliado. Resultados dependem de aplicação individual.</footer>
+</section>
+
+<section class="module">
+  <div class="module-head">
+    <div class="module-num">Módulo 1</div>
+    <h2>Por que você não precisa de anúncio pra vender</h2>
+  </div>
+  <div class="goal"><b>Objetivo do módulo</b>Destruir a crença limitante "preciso de dinheiro pra ganhar dinheiro" e mostrar o caminho real.</div>
+
+  <h3 class="lesson"><span class="lesson-tag">1.1</span>O erro que 90% dos afiliados iniciantes cometem</h3>
+  <p>A maioria começa criando um perfil, colando o link de afiliado na bio e esperando alguém clicar. Isso não é estratégia, é sorte. Redes sociais e WhatsApp vendem por <b>relação</b>, não por exposição. Você não precisa de 10 mil seguidores — precisa de 30 a 50 contatos aquecidos.</p>
+  <div class="proof"><b>Prova</b>Um afiliado com 200 seguidores no Instagram e uma lista de 80 contatos no WhatsApp bem trabalhados vende mais que um perfil com 5 mil seguidores frios. O que muda é o <b>estágio de calor</b> do contato, não o tamanho da audiência.</div>
+
+  <h3 class="lesson"><span class="lesson-tag">1.2</span>Os 3 estágios de um contato (a base de tudo)</h3>
+  <table class="stages">
+    <tr><th>Estágio</th><th>O que é</th><th>O que você faz</th></tr>
+    <tr><td class="stage-frio">🧊 Frio</td><td>Te conhece, mas nunca viu você falar do produto</td><td>Conteúdo de valor, sem venda</td></tr>
+    <tr><td class="stage-morno">🌤️ Morno</td><td>Já viu você comentar sobre o assunto, interagiu</td><td>Prova social + curiosidade</td></tr>
+    <tr><td class="stage-quente">🔥 Quente</td><td>Já perguntou, já demonstrou interesse direto</td><td>Oferta direta com CTA</td></tr>
+  </table>
+  <div class="rule"><b>Regra de ouro:</b> nunca mande oferta direta pra contato frio. É isso que causa a sensação de "estar sendo chato" — porque, tecnicamente, está.</div>
+
+  <h3 class="lesson"><span class="lesson-tag">1.3</span>Como escolher o produto certo pra promover</h3>
+  <p>Checklist rápido antes de aceitar qualquer afiliação:</p>
+  <ul class="checklist">
+    <li><span class="box"></span>Página de vendas já é boa? (Se você não compraria vendo a LP, seu lead também não vai)</li>
+    <li><span class="box"></span>Comissão de pelo menos 40% (produtos low ticket precisam de margem alta pro afiliado)</li>
+    <li><span class="box"></span>Produtor responde suporte rápido (evita você levar reclamação de cliente)</li>
+    <li><span class="box"></span>Você consegue usar/testar o produto (voz de autoridade real &gt; "achismo")</li>
+  </ul>
+  <div class="pagefoot">Afiliado Blindado — Módulo 1 de 6 · Material gratuito</div>
+</section>
+
+<section class="module">
+  <div class="module-head">
+    <div class="module-num">Módulo 2</div>
+    <h2>Sua vitrine sem aparecer</h2>
+  </div>
+  <div class="goal"><b>Objetivo do módulo</b>Montar Stories/Status do WhatsApp que vendem sem parecer propaganda.</div>
+
+  <h3 class="lesson"><span class="lesson-tag">2.1</span>O "Status que vende sozinho"</h3>
+  <p>Fórmula de 3 posts por semana que qualquer pessoa pode postar, mesmo sem gravar vídeo:</p>
+  <ol class="numbered">
+    <li><b>Post de bastidor</b> — print de uma comissão, de uma mensagem de agradecimento de cliente, ou do "trabalhando hoje nisso 👀" (constrói curiosidade sem revelar tudo)</li>
+    <li><b>Post de valor</b> — uma dica real relacionada ao nicho do produto (gera reciprocidade, não é sobre o produto)</li>
+    <li><b>Post de gancho</b> — uma frase de efeito ou pergunta que abre espaço pra alguém chamar no direct/zap ("Quem mais tá cansado de X?")</li>
+  </ol>
+
+  <h3 class="lesson"><span class="lesson-tag">2.2</span>Como responder quando alguém pergunta "o que é isso?"</h3>
+  <p>Nunca mande o link direto na primeira resposta. Sequência:</p>
+  <ol class="numbered">
+    <li>Responda com uma pergunta de qualificação ("Você já tentou resolver isso antes? Como foi?")</li>
+    <li>Depois de 1–2 trocas, apresente o produto como <b>solução para o que a pessoa acabou de contar</b>, não como oferta genérica</li>
+    <li>Só então manda o link — nesse ponto o contato já está morno/quente</li>
+  </ol>
+
+  <h3 class="lesson"><span class="lesson-tag">2.3</span>Erro fatal: link na bio sem contexto</h3>
+  <p>Link na bio funciona, mas só depois que a pessoa já está curiosa. Colocar o link antes de gerar qualquer interesse é a mesma coisa que gritar oferta pra quem está passando na rua — ninguém para.</p>
+  <div class="pagefoot">Afiliado Blindado — Módulo 2 de 6 · Material gratuito</div>
+</section>
+
+<section class="module">
+  <div class="module-head">
+    <div class="module-num">Módulo 3</div>
+    <h2>Os primeiros scripts</h2>
+  </div>
+  <div class="goal"><b>Objetivo do módulo</b>Dar um gostinho real de scripts que funcionam, mostrando que existe estrutura por trás — e abrir a porta pro sistema completo.</div>
+
+  <h3 class="lesson"><span class="lesson-tag">3.1</span>Script de abordagem para contato morno (exemplo real)</h3>
+  <div class="script-card"><span class="label">Script</span>Oi [nome]! Vi que você comentou sobre [assunto relacionado ao nicho] outro dia.
+Eu passei por isso também e acabei encontrando uma forma de resolver que
+funcionou bem pra mim. Você já tentou algo parecido ou tá começando do zero?</div>
+  <p class="why">Por que funciona: gera contexto pessoal + faz pergunta aberta (não é venda, é conversa).</p>
+
+  <h3 class="lesson"><span class="lesson-tag">3.2</span>O que fazer quando a pessoa demonstra interesse</h3>
+  <p>Depois que a pessoa responde com interesse, o próximo passo é apresentar o produto <b>como resposta ao problema dela</b>, nunca como "olha essa oportunidade incrível". Aqui é onde a maioria trava — não porque não sabe vender, mas porque não tem o <b>roteiro completo pronto pra cada situação</b> (objeção de preço, "vou pensar", "já tentei outra coisa e não deu certo"...).</p>
+
+  <div class="gap-box">
+    <span class="eyebrow">O que vem no módulo pago</span>
+    <h3>Você acabou de ver 1 script funcionando</h3>
+    <p>Mas uma conversa de venda real tem no mínimo 5 pontos de decisão: abordagem, qualificação, apresentação, quebra de objeção e fechamento — cada um com variações dependendo do estágio do contato.</p>
+    <ul>
+      <li>Os 30+ scripts prontos, organizados por estágio e por objeção específica</li>
+      <li>O sistema de automação pra aquecer contatos sem digitar manualmente toda vez</li>
+      <li>O calendário de 30 dias de conteúdo pronto (Stories + Feed)</li>
+      <li>Templates de artes editáveis + planilha de controle de comissões</li>
+    </ul>
+    <span class="cta">Quero o Afiliado Blindado completo — R$ 47</span>
+  </div>
+  <div class="pagefoot">Afiliado Blindado — Módulo 3 de 6 · Material gratuito</div>
+</section>
+
+</body>
+</html>

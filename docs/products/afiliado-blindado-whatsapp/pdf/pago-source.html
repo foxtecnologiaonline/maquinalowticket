@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Afiliado Blindado — Conteúdo Completo</title>
+<link href="fonts/google-fonts.local.css" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 22mm 18mm; }
+  :root{
+    --bg:#f7f4ec; --surface:#ffffff; --ink:#1a1f36; --muted:#5c6280;
+    --accent:#e0562f; --line:#e3ddcd;
+    --frio:#3f7cb0; --morno:#b8780f; --quente:#c9451f;
+    --font-display:'Fraunces',ui-serif,Georgia,serif;
+    --font-body:'IBM Plex Sans',ui-sans-serif,system-ui,sans-serif;
+    --font-mono:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--font-body); font-size:11pt; line-height:1.55;
+  }
+  h1,h2,h3{ font-family:var(--font-display); font-weight:600; text-wrap:balance; margin:0; }
+  p{ margin:0 0 10pt; }
+
+  .cover{
+    height:246mm; display:flex; flex-direction:column; justify-content:space-between;
+    page-break-after:always;
+  }
+  .cover .eyebrow{ font-family:var(--font-mono); font-size:9pt; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); }
+  .cover .badge{
+    display:inline-block; font-family:var(--font-mono); font-size:8.5pt; letter-spacing:.08em;
+    text-transform:uppercase; color:#fff; background:var(--ink); padding:5pt 11pt; border-radius:999pt; margin-bottom:16pt;
+  }
+  .cover h1{ font-size:30pt; line-height:1.15; margin-bottom:14pt; max-width:15.5cm; }
+  .cover .sub{ font-size:12pt; color:var(--muted); max-width:13.5cm; }
+  .cover .toc{ border-top:1px solid var(--line); padding-top:16pt; }
+  .cover .toc-title{ font-family:var(--font-mono); font-size:9pt; text-transform:uppercase; letter-spacing:.1em; color:var(--muted); margin-bottom:10pt; }
+  .cover .toc-item{ display:flex; justify-content:space-between; padding:6pt 0; border-bottom:1px dotted var(--line); font-size:10.5pt; }
+  .cover .toc-item span:last-child{ color:var(--muted); font-family:var(--font-mono); font-size:9pt; }
+  .cover footer{ font-size:8.5pt; color:var(--muted); }
+
+  .module{ page-break-before:always; }
+  .module:first-of-type{ page-break-before:auto; }
+  .module-head{ border-bottom:2px solid var(--ink); padding-bottom:10pt; margin-bottom:18pt; }
+  .module-num{ font-family:var(--font-mono); font-size:9pt; color:var(--accent); letter-spacing:.1em; text-transform:uppercase; }
+  .module-head h2{ font-size:19pt; margin-top:4pt; }
+  .goal{
+    background:var(--surface); border-left:3px solid var(--accent); border-radius:2pt;
+    padding:9pt 12pt; margin-bottom:16pt; font-size:10pt;
+  }
+  .goal b{ font-family:var(--font-mono); text-transform:uppercase; font-size:8.5pt; letter-spacing:.06em; color:var(--muted); display:block; margin-bottom:3pt; }
+
+  h3.lesson{ font-size:12.5pt; margin-top:18pt; margin-bottom:8pt; }
+  h3.lesson .lesson-tag{ font-family:var(--font-mono); font-size:9pt; color:var(--accent); margin-right:6pt; }
+
+  .quickwin{
+    background:var(--ink); color:#f1eee6; border-radius:10pt; padding:16pt 18pt; margin:14pt 0;
+  }
+  .quickwin .eyebrow{ font-family:var(--font-mono); font-size:9pt; text-transform:uppercase; letter-spacing:.1em; color:#ff9c7d; margin-bottom:8pt; display:block; }
+  .quickwin p{ color:#cfd3ec; font-size:10.5pt; }
+  .quickwin .script-card{ background:#242b4a; }
+  .quickwin .instr{ font-size:9.5pt; color:#a6adcf; margin-top:8pt; }
+
+  .script-card{
+    background:#1a1f36; color:#f1eee6; border-radius:8pt; padding:14pt 16pt; margin:12pt 0;
+    font-family:var(--font-mono); font-size:9.5pt; line-height:1.6; white-space:pre-wrap;
+  }
+  .script-card .label{
+    display:block; font-family:var(--font-body); font-size:8pt; text-transform:uppercase;
+    letter-spacing:.08em; color:#a6adcf; margin-bottom:6pt;
+  }
+
+  .stage-group{ margin:16pt 0; }
+  .stage-group-head{ display:flex; align-items:center; gap:8pt; margin-bottom:8pt; }
+  .stage-group-head .swatch{ width:9pt; height:9pt; border-radius:50%; }
+  .stage-group-head h4{ font-family:var(--font-body); font-weight:700; font-size:11pt; margin:0; }
+  .stage-group-head .count{ font-family:var(--font-mono); font-size:8.5pt; color:var(--muted); }
+  ul.script-list{ margin:0; padding-left:16pt; font-size:10pt; columns:2; column-gap:20pt; }
+  ul.script-list li{ margin-bottom:6pt; break-inside:avoid; }
+
+  table.routine{ width:100%; border-collapse:collapse; margin:12pt 0; font-size:10pt; }
+  table.routine th{
+    font-family:var(--font-mono); font-size:8.5pt; text-transform:uppercase; letter-spacing:.06em;
+    text-align:left; color:var(--muted); padding:6pt 8pt; border-bottom:1px solid var(--ink);
+  }
+  table.routine td{ padding:8pt; border-bottom:1px solid var(--line); }
+  table.routine td:first-child{ font-family:var(--font-mono); color:var(--accent); white-space:nowrap; }
+
+  .callout{ background:var(--surface); border:1px solid var(--line); border-radius:6pt; padding:10pt 12pt; font-size:10pt; margin:10pt 0; }
+  .callout b{ font-family:var(--font-mono); font-size:8.5pt; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); display:block; margin-bottom:3pt; }
+
+  .bonus-grid{ display:grid; gap:10pt; margin:14pt 0; }
+  .bonus-card{ background:var(--surface); border:1px solid var(--line); border-radius:8pt; padding:12pt 14pt; display:flex; gap:10pt; align-items:flex-start; font-size:10pt; }
+  .bonus-card .gift{ font-size:14pt; }
+
+  .guarantee{
+    background:#fbeee7; border:1px solid #f0c9b4; border-radius:8pt; padding:14pt 16pt; margin-top:16pt;
+    display:flex; gap:12pt; align-items:flex-start;
+  }
+  .guarantee .badge2{
+    font-family:var(--font-mono); font-size:8.5pt; border:1px solid var(--accent); color:var(--accent);
+    border-radius:999pt; padding:3pt 9pt; flex-shrink:0; margin-top:2pt;
+  }
+
+  .pagefoot{ margin-top:28pt; font-size:8pt; color:var(--muted); text-align:center; }
+</style>
+</head>
+<body>
+
+<section class="cover">
+  <div>
+    <div class="eyebrow">Afiliado Blindado</div>
+    <span class="badge">Conteúdo completo · Módulos 4–6 + bônus</span>
+    <h1>Os 30+ scripts, a automação e o sistema de escala</h1>
+    <p class="sub">Continuação dos Módulos 1–3: aqui está tudo que faltava pra transformar contatos aquecidos em vendas recorrentes.</p>
+  </div>
+  <div class="toc">
+    <div class="toc-title">Neste material</div>
+    <div class="toc-item"><span>Módulo 4 — Os 30+ scripts prontos (quick win no dia 1)</span><span>p. 2</span></div>
+    <div class="toc-item"><span>Módulo 5 — Sistema de automação</span><span>p. 4</span></div>
+    <div class="toc-item"><span>Módulo 6 — Escala e renda recorrente</span><span>p. 5</span></div>
+    <div class="toc-item"><span>Bônus e garantia</span><span>p. 6</span></div>
+  </div>
+  <footer>Afiliado Blindado — conteúdo educacional sobre vendas como afiliado. Resultados dependem de aplicação individual.</footer>
+</section>
+
+<section class="module">
+  <div class="module-head">
+    <div class="module-num">Módulo 4</div>
+    <h2>Os 30+ scripts prontos</h2>
+  </div>
+  <div class="goal"><b>Objetivo do módulo</b>Sair da aula já com uma mensagem pronta pra mandar hoje.</div>
+
+  <h3 class="lesson"><span class="lesson-tag">4.1</span>🎯 Sua primeira venda começa agora (mande hoje)</h3>
+  <div class="quickwin">
+    <span class="eyebrow">Quick win — dia 1</span>
+    <p>Copie, personalize com o nome do contato e mande para 5 pessoas da sua lista morna agora:</p>
+    <div class="script-card"><span class="label">Script</span>Oi [nome], tudo bem? Lembrei de você porque [motivo real/contexto da conversa anterior].
+Encontrei uma forma de resolver [problema] que me ajudou bastante e queria muito
+te mostrar — topa eu te explicar rapidinho como funciona?</div>
+    <p class="instr"><b>Instrução de uso:</b> mande só para contatos já mornos/quentes (revisão do Módulo 1). Nunca dispare em massa igual para todos — personalize o "[motivo real]" pra cada pessoa.</p>
+  </div>
+
+  <h3 class="lesson"><span class="lesson-tag">4.2</span>Biblioteca de scripts por estágio</h3>
+
+  <div class="stage-group">
+    <div class="stage-group-head"><span class="swatch" style="background:var(--frio)"></span><h4>Contato frio → aquecendo</h4><span class="count">5 scripts</span></div>
+    <ul class="script-list">
+      <li>Reconexão após tempo sem falar</li>
+      <li>Comentário genuíno em Story do contato + gancho de conversa</li>
+      <li>Pergunta de curiosidade sobre a dor do nicho</li>
+      <li>Compartilhamento de conteúdo de valor + pergunta aberta</li>
+      <li>Convite pra grupo/comunidade gratuita relacionada ao nicho</li>
+    </ul>
+  </div>
+
+  <div class="stage-group">
+    <div class="stage-group-head"><span class="swatch" style="background:var(--morno)"></span><h4>Contato morno → qualificando</h4><span class="count">10 scripts</span></div>
+    <ul class="script-list">
+      <li>Perguntas de qualificação (dor real e urgente)</li>
+      <li>Scripts de prova social (resultado próprio ou de terceiros)</li>
+      <li>Apresentação suave do produto como resposta à dor relatada</li>
+      <li>Reengajar quem sumiu no meio da conversa</li>
+      <li>Resposta para "manda mais informação"</li>
+    </ul>
+  </div>
+
+  <div class="stage-group">
+    <div class="stage-group-head"><span class="swatch" style="background:var(--quente)"></span><h4>Contato quente → fechando</h4><span class="count">10 scripts</span></div>
+    <ul class="script-list">
+      <li>Fechamento direto com CTA e link</li>
+      <li>Fechamento com escassez real (vaga/bônus limitado)</li>
+      <li>Quebra de objeção "tá caro" (ancoragem + parcelamento)</li>
+      <li>Quebra de objeção "vou pensar"</li>
+      <li>Quebra de objeção "já tentei outra coisa"</li>
+      <li>Quebra de objeção "não tenho tempo"</li>
+      <li>Script de garantia (reduzir risco percebido)</li>
+      <li>Script de urgência ética (bônus reais, nunca fake)</li>
+      <li>Reativação pós-"vou pensar" (follow-up em 48h)</li>
+      <li>Pós-venda (ativar indicação/prova social nova)</li>
+    </ul>
+  </div>
+
+  <div class="stage-group">
+    <div class="stage-group-head"><span class="swatch" style="background:var(--ink)"></span><h4>Pós-venda</h4><span class="count">5 scripts</span></div>
+    <ul class="script-list">
+      <li>Boas-vindas + ativação de quick win</li>
+      <li>Pedido de depoimento</li>
+      <li>Oferta de upsell/produto de ticket maior</li>
+      <li>Reativação de cliente inativo</li>
+      <li>Pedido de indicação</li>
+    </ul>
+  </div>
+  <div class="pagefoot">Afiliado Blindado — Módulo 4 de 6 · Conteúdo completo</div>
+</section>
+
+<section class="module">
+  <div class="module-head">
+    <div class="module-num">Módulo 5</div>
+    <h2>Sistema de automação</h2>
+  </div>
+  <div class="goal"><b>Objetivo do módulo</b>Escalar sem precisar digitar tudo manualmente.</div>
+
+  <h3 class="lesson"><span class="lesson-tag">5.1</span>Listas de transmissão vs. grupos</h3>
+  <div class="callout"><b>Lista de transmissão</b>Para contatos mornos/quentes individualizados — a mensagem chega como se fosse individual.</div>
+  <div class="callout"><b>Grupo/Comunidade</b>Para aquecer contatos frios em volume, com conteúdo de valor semanal.</div>
+
+  <h3 class="lesson"><span class="lesson-tag">5.2</span>Automação leve com ferramentas gratuitas</h3>
+  <p>Passo a passo de configuração de:</p>
+  <ul class="numbered" style="padding-left:16pt; font-size:10.5pt;">
+    <li>Respostas rápidas nativas do WhatsApp Business (atalhos <code>/</code> para os scripts do Módulo 4)</li>
+    <li>Etiquetas de contato (🧊 frio / 🌤️ morno / 🔥 quente) para nunca perder o estágio de cada lead</li>
+    <li>Catálogo do WhatsApp Business configurado com a oferta</li>
+  </ul>
+
+  <h3 class="lesson"><span class="lesson-tag">5.3</span>Rotina diária de 30 minutos</h3>
+  <table class="routine">
+    <tr><th>Tempo</th><th>Ação</th></tr>
+    <tr><td>10 min</td><td>Postar 1 Status/Story (rotação dos 3 tipos do Módulo 2)</td></tr>
+    <tr><td>10 min</td><td>Responder e etiquetar novas interações</td></tr>
+    <tr><td>10 min</td><td>Disparar follow-up para contatos quentes parados há 48h+</td></tr>
+  </table>
+  <div class="pagefoot">Afiliado Blindado — Módulo 5 de 6 · Conteúdo completo</div>
+</section>
+
+<section class="module">
+  <div class="module-head">
+    <div class="module-num">Módulo 6</div>
+    <h2>Escala e renda recorrente</h2>
+  </div>
+
+  <h3 class="lesson"><span class="lesson-tag">6.1</span>Como adicionar um segundo produto sem canibalizar o primeiro</h3>
+  <p>Regra: o segundo produto deve resolver a <b>próxima dor</b> do mesmo avatar (upsell natural), nunca um nicho totalmente diferente na mesma lista.</p>
+
+  <h3 class="lesson"><span class="lesson-tag">6.2</span>Calendário de 30 dias de conteúdo pronto</h3>
+  <p>Planilha com 30 posts pré-escritos (rotação bastidor/valor/gancho do Módulo 2), prontos para adaptar — elimina o bloqueio de "o que eu posto hoje".</p>
+
+  <h3 class="lesson"><span class="lesson-tag">6.3</span>Como transformar cliente satisfeito em novo canal de vendas</h3>
+  <p>Script de ativação de indicação (Módulo 4) + como estruturar uma comissão simples de "indicou, ganhou" informal para girar o funil sem depender só de você.</p>
+
+  <h3 class="lesson" style="margin-top:26pt;">🎁 Bônus inclusos</h3>
+  <div class="bonus-grid">
+    <div class="bonus-card"><span class="gift">🎁</span><div><b>Banco de 60 artes editáveis</b> (Stories + Feed) em formato Canva</div></div>
+    <div class="bonus-card"><span class="gift">🎁</span><div><b>Planilha de controle de comissões e follow-up</b> (Google Sheets, template pronto)</div></div>
+    <div class="bonus-card"><span class="gift">🎁</span><div><b>Grupo de suporte no WhatsApp por 30 dias</b> — tira-dúvidas e correção de rota</div></div>
+  </div>
+
+  <div class="guarantee">
+    <span class="badge2">7 dias</span>
+    <p style="margin:0; font-size:10pt;"><b>Garantia incondicional.</b> Se aplicar os scripts do Módulo 4 e não fizer nenhuma venda, devolvemos 100% — sem perguntas.</p>
+  </div>
+  <div class="pagefoot">Afiliado Blindado — Módulo 6 de 6 · Conteúdo completo</div>
+</section>
+
+</body>
+</html>

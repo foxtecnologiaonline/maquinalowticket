@@ -6,45 +6,28 @@
 
 ---
 
-## CONTEÚDO GRATUITO (60%)
+## CONTEÚDO GRATUITO (60%) ✅ COMPLETO
 
-### Lead magnet
-**"Teste: Qual é o Seu Padrão de Briga? (e o do seu parceiro)"** — quiz com 4 perfis (Crítico, Defensivo, Fugidio, Acumulador) baseado nos "4 Cavaleiros" de Gottman, adaptado em linguagem simples.
-
-### Conteúdo de blog/Reels
-1. "Por que 'você nunca me ajuda' é a frase que mais destrói relacionamentos (e o que falar no lugar)"
-2. "A diferença entre discutir e se comunicar — a maioria dos casais nunca aprendeu"
-3. "3 frases que parecem inofensivas mas são desprezo disfarçado"
-4. Reels: "Troque isso → por isso" (antes/depois de frases de briga, formato rápido e compartilhável)
-5. "O silêncio também é violência: como identificar a 'muralha de gelo'"
+**Arquivos prontos em `free/`:**
+- `lead-magnet-PDF.md` — quiz "Qual é o Seu Padrão de Briga?" (4 perguntas, 4 perfis: Crítico, Defensivo, Fugidio, Acumulador)
+- `artigo-01-voce-nunca-me-ajuda.md` — artigo + roteiro de Reels
+- `artigo-02-discutir-vs-comunicar.md` — artigo + roteiro de Reels
+- `artigo-03-frases-desprezo-disfarcado.md` — artigo + roteiro de Reels
+- `artigo-04-muralha-de-gelo.md` — artigo + roteiro de Reels
+- `reel-05-troque-por-isso.md` — reel de antes/depois de frases, formato rápido
 
 ---
 
-## CONTEÚDO PAGO (40%)
+## CONTEÚDO PAGO (40%) ✅ COMPLETO
 
-### Módulo 1 — Diagnóstico do Casal (dias 1-2)
-- Mapeamento dos gatilhos de briga (formulário guiado)
-- Identificação do padrão de comunicação de cada um
-
-### Módulo 2 — A Estrutura CNV (dias 3-7)
-- Os 4 passos: Observação → Sentimento → Necessidade → Pedido (adaptado para casais brasileiros, sem jargão)
-- 20 conversas reescritas (do jeito que sai errado → do jeito que funciona)
-- Como pedir o que você precisa sem soar como cobrança
-
-### Módulo 3 — Conversas Difíceis (dias 8-11)
-- Script para falar de dinheiro sem brigar
-- Script para dividir tarefas de casa sem ressentimento
-- Script para reclamar da família do outro sem virar guerra
-- Script para falar de sexo/intimidade sem constrangimento
-
-### Módulo 4 — Manutenção (dias 12-14)
-- Ritual semanal de 20 minutos (check-in do casal)
-- Como se desculpar de um jeito que o outro realmente sente
-
-### Bônus
-- 50 Frases de Abertura para Conversas Difíceis
-- Planner de Ritual Semanal (imprimível)
-- Áudio guiado de 10 min para "esfriar a cabeça" antes de conversas difíceis
+**Arquivos prontos em `pago/`:**
+- `modulo-1-diagnostico-do-casal.md` — mapeamento de gatilhos + identificação do padrão de comunicação de cada um
+- `modulo-2-estrutura-cnv.md` — os 4 passos (Observação-Sentimento-Necessidade-Pedido) + as 20 conversas reescritas completas
+- `modulo-3-conversas-dificeis.md` — scripts completos para dinheiro, tarefas, família e intimidade
+- `modulo-4-manutencao.md` — ritual semanal de 20 min + estrutura de pedido de desculpas eficaz
+- `bonus-50-frases-abertura.md` — as 50 frases prontas
+- `planner-ritual-semanal.csv` — planner imprimível para o check-in semanal
+- `bonus-audio-script-esfriar-cabeca.md` — roteiro completo para gravação do áudio guiado de 10 min
 
 ---
 

@@ -6,45 +6,28 @@
 
 ---
 
-## CONTEÚDO GRATUITO (60%)
+## CONTEÚDO GRATUITO (60%) ✅ COMPLETO
 
-### Lead magnet
-**"Calculadora do Relacionamento à Distância: Vocês Têm Estrutura para Aguentar?"** — checklist com pontuação (comunicação, confiança, plano de reencontro, finanças) que gera um diagnóstico personalizado por e-mail.
-
-### Conteúdo de blog/Reels
-1. "As 3 fases do relacionamento à distância que ninguém te conta (e em qual delas os casais mais terminam)"
-2. "Como lidar com ciúmes à distância sem virar controle"
-3. "Fuso horário, saudade e silêncio: como não deixar o WhatsApp virar a única prova de amor"
-4. Reels: "Ideias de encontro virtual que não são só chamada de vídeo"
-5. "Quando não ter data de reencontro é o maior risco do relacionamento"
+**Arquivos prontos em `free/`:**
+- `lead-magnet-PDF.md` — calculadora "Vocês Têm Estrutura para Aguentar?" (5 perguntas, 3 diagnósticos)
+- `artigo-01-3-fases-rad.md` — artigo + roteiro de Reels
+- `artigo-02-ciume-sem-controle.md` — artigo + roteiro de Reels
+- `artigo-03-whatsapp-prova-de-amor.md` — artigo + roteiro de Reels
+- `artigo-04-sem-data-de-reencontro.md` — artigo + roteiro de Reels
+- `reel-05-ideias-encontro-virtual.md` — lista rápida de ideias, gancho para o bônus pago
 
 ---
 
-## CONTEÚDO PAGO (40%)
+## CONTEÚDO PAGO (40%) ✅ COMPLETO
 
-### Módulo 1 — Fundação (semana 1)
-- As 3 fases do RAD (Lua de mel virtual → Desgaste → Reencontro) e como atravessar cada uma
-- Contrato de relacionamento: expectativas claras sobre exclusividade, frequência de contato, visitas
-
-### Módulo 2 — Comunicação à Distância (semana 2)
-- Como substituir a presença física por rituais (chamadas com propósito, não só "oi, tudo bem")
-- Scripts para conversas sobre ciúmes sem parecer controlador(a)
-- Como lidar com fuso horário e rotina sem ressentimento
-
-### Módulo 3 — Confiança e Segurança Emocional (semana 3)
-- Como reconstruir confiança se já houve uma crise
-- Sinais de alerta reais (vs. paranoia) — diferenciação importante
-- Manutenção da vida própria sem culpa (evita dependência emocional tóxica)
-
-### Módulo 4 — O Caminho para o Reencontro (semana 4)
-- Planejamento prático: visto, mudança, finanças, timeline
-- Como preparar a transição para "morar junto" depois de meses/anos à distância
-- Gestão de expectativas: o reencontro físico também exige adaptação
-
-### Bônus
-- Kit de 60 Ideias de Encontro Virtual (jogos, filmes sincronizados, jantar virtual)
-- Planilha de Planejamento Financeiro para Visita/Mudança
-- Checklist "Sinais de Alerta Real" (segurança emocional)
+**Arquivos prontos em `pago/`:**
+- `modulo-1-fundacao.md` — as 3 fases do RAD em detalhe + contrato de relacionamento completo (6 pontos de alinhamento)
+- `modulo-2-comunicacao.md` — rituais com propósito, scripts de ciúme, gestão de fuso horário
+- `modulo-3-confianca.md` — reconstrução de confiança pós-crise, sinais de alerta real vs. paranoia, vida própria
+- `modulo-4-reencontro.md` — checklist de planejamento prático, transição para morar junto, gestão de expectativas
+- `bonus-60-ideias-encontro-virtual.md` — as 60 ideias completas
+- `bonus-planilha-financeira-mudanca.csv` — planilha de planejamento financeiro
+- `bonus-checklist-sinais-de-alerta.md` — checklist completo de segurança emocional
 
 ---
 
